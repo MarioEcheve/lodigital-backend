@@ -1,5 +1,6 @@
 package com.lodigital.model;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
@@ -10,11 +11,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable{
+	
+	private static final long serialVersionUID = 1L;
 	
 	@Id
 	private Integer idUsuario;
@@ -192,4 +193,6 @@ public class Usuario {
 	public void setRoles(List<Rol> roles) {
 		this.roles = roles;
 	}
+	
+	
 }
