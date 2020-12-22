@@ -28,4 +28,9 @@ public class EmpresaController {
 		return new ResponseEntity<List<Empresa>>(lista, HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/usuarioByRut/{rut}")
+	public ResponseEntity<Usuario> usuarioByRut(@PathVariable("rut") String rut) {
+		Usuario usr = empresaService.buscarPorRut(rut);
+		return new ResponseEntity<Usuario>(usr, HttpStatus.OK);
+	}
 }
