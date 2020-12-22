@@ -19,12 +19,13 @@ public class UsuarioServiceImpl implements UserDetailsService{
 	@Autowired
 	private IUsuarioRepo usuarioRepo;
 	
+	// se implementa de esta forma el loadbyusername ya que no se puede modificr el nombre
 	@Override
-	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		Usuario usuario = usuarioRepo.findOneByUsername(username);
+	public UserDetails loadUserByUsername(String rut) throws UsernameNotFoundException {
+		Usuario usuario = usuarioRepo.findOneByRut(rut);
 		
 		if(usuario == null) {
-			throw new UsernameNotFoundException(String.format("Usuario no existe", username));
+			throw new UsernameNotFoundException(String.format("Usuario no existe", rut));
 		}
 		
 		List<GrantedAuthority> roles = new ArrayList<>();
@@ -36,4 +37,9 @@ public class UsuarioServiceImpl implements UserDetailsService{
 		UserDetails ud = new User(usuario.getUsername(), usuario.getPassword(), roles);
 		return ud;
 	}
+	public Usuario buscarPorRut(String rut) {
+		Usuario usuario = usuarioRepo.findOneByRut(rut);
+		return usuario;
+	}
+	
 }

@@ -38,10 +38,6 @@ public class Empresa implements Serializable {
 	@Column(name = "fecha_modificacion")
 	private Instant fechaModificacion;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "empresa_usuarios", joinColumns = @JoinColumn(name = "id_empresa", referencedColumnName = "idEmpresa"), inverseJoinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "idUsuario"))
-	private List<Usuario> usuarios;
-	
 	
 	@OneToMany(mappedBy = "empresa")
     private Set<Dependencia> dependencias = new HashSet<>();
@@ -92,13 +88,5 @@ public class Empresa implements Serializable {
 
 	public void setFechaModificacion(Instant fechaModificacion) {
 		this.fechaModificacion = fechaModificacion;
-	}
-
-	public List<Usuario> getUsuarios() {
-		return usuarios;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 }

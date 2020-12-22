@@ -24,18 +24,18 @@ public class LodigitalApplicationTests {
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
-		us.setIdUsuario(1);
-		us.setUsername("mario@gmail.com");
+		us.setIdUsuario(2);
+		us.setUsername("fvilches@gmail.com");
 		us.setPassword(bcrypt.encode("12345"));
 		us.setEnabled(true);
-		us.setApellidoPaterno("echeverria");
-		us.setApellidoMaterno("lopez");
-		us.setEmailPrincipal("marioandreseche@gmail.com");
+		us.setApellidoPaterno("soleman");
+		us.setApellidoMaterno("vilches");
+		us.setEmailPrincipal("fvilchessoleman@gmail.com");
 		us.setEmailSecundario(null);
 		us.setProfesionOficio("ingeniero");
-		us.setNombre("Mario Echeverria");
+		us.setNombre("Fernando Soleman");
 		us.setTelefonoPrincipal("944086220");
-		us.setRut("18011897-7");
+		us.setRut("123455678-9");
 		Usuario retorno = usuarioRepo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));

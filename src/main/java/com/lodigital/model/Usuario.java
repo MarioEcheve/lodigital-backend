@@ -53,7 +53,7 @@ public class Usuario implements Serializable{
 	@Column(name = "fecha_modificacion")
 	private Date fechaModificacion;
 	
-	@Column(name = "usuername", nullable = false, unique = true)
+	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 	
 	@Column(name = "clave", nullable = false)
