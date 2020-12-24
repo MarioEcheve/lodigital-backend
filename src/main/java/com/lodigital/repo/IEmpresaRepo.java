@@ -9,5 +9,5 @@ import org.springframework.data.repository.query.Param;
 import com.lodigital.model.Empresa;
 
 public interface IEmpresaRepo extends  JpaRepository<Empresa, Integer>{
-
+	
 }
