@@ -81,16 +81,14 @@ public class Empresa implements Serializable {
 	@Column(name = "telefono_secundario_contacto_tecnico", length = 11)
 	private String telefonoSecundarioContactoTecnico;
 	
-	
 	@Column(name = "fecha_creacion")
 	private Instant fechaCreacion;
 
 	@Column(name = "fecha_modificacion")
 	private Instant fechaModificacion;
 	
-	
 	@OneToMany(mappedBy = "empresa")
-    private Set<Dependencia> dependencias = new HashSet<>();
+    private Set<Region> region = new HashSet<>();
 
 	public Integer getIdEmpresa() {
 		return idEmpresa;
@@ -236,11 +234,12 @@ public class Empresa implements Serializable {
 		this.telefonoSecundarioContactoTecnico = telefonoSecundarioContactoTecnico;
 	}
 
-	public Set<Dependencia> getDependencias() {
-		return dependencias;
+	public Set<Region> getRegion() {
+		return region;
 	}
 
-	public void setDependencias(Set<Dependencia> dependencias) {
-		this.dependencias = dependencias;
+	public void setRegion(Set<Region> region) {
+		this.region = region;
 	}
+	
 }

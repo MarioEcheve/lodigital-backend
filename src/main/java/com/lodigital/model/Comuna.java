@@ -2,9 +2,6 @@ package com.lodigital.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.io.Serializable;
 
 /**
@@ -24,7 +21,4 @@ public class Comuna implements Serializable{
     @Column(name = "nombre", nullable = false)
     private String nombre;
 	
-	@ManyToOne
-    @JsonIgnoreProperties("comunas")
-    private Region region;
 }

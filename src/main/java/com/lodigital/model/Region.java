@@ -4,6 +4,8 @@ package com.lodigital.model;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,9 +24,24 @@ public class Region implements Serializable{
     @Column(name = "nombre", nullable = false)
     private String nombre;
 	
-	@OneToMany(mappedBy = "region")
-	private Set<Dependencia> dependencias = new HashSet<>();
-	
-	@OneToMany(mappedBy = "region")
-    private Set<Comuna> comunas = new HashSet<>();
+	@ManyToOne
+    @JsonIgnoreProperties("region")
+    private Empresa empresa;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
 }
