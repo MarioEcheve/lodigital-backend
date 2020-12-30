@@ -62,9 +62,7 @@ public class Usuario implements Serializable{
 	@Column(name = "estado", nullable = false)
 	private boolean enabled;
 	
-	@ManyToMany(fetch = FetchType.EAGER)
-	@JoinTable(name = "usuario_rol", joinColumns = @JoinColumn(name = "id_usuario", referencedColumnName = "idUsuario"), inverseJoinColumns = @JoinColumn(name = "id_rol", referencedColumnName = "idRol"))
-	private List<Rol> roles;
+	
 
 	public Integer getIdUsuario() {
 		return idUsuario;
@@ -185,14 +183,4 @@ public class Usuario implements Serializable{
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
-
-	public List<Rol> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Rol> roles) {
-		this.roles = roles;
-	}
-	
-	
 }

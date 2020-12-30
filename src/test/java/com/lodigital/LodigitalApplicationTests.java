@@ -33,7 +33,7 @@ public class LodigitalApplicationTests {
 		us.setEmailPrincipal("fvilchessoleman@gmail.com");
 		us.setEmailSecundario(null);
 		us.setProfesionOficio("ingeniero");
-		us.setNombre("Fernando Soleman");
+		us.setNombre("Fernando");
 		us.setTelefonoPrincipal("944086220");
 		us.setRut("123455678-9");
 		Usuario retorno = usuarioRepo.save(us);

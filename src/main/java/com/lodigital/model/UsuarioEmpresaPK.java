@@ -15,6 +15,10 @@ public class UsuarioEmpresaPK  implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_empresa", nullable = false)
 	private Empresa empresa;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_rol", nullable = false)
+	private Rol rol;
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -30,6 +34,14 @@ public class UsuarioEmpresaPK  implements Serializable {
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
+	}
+	
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 
 	@Override

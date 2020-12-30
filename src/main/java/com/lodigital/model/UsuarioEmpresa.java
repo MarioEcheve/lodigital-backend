@@ -19,6 +19,9 @@ public class UsuarioEmpresa {
 	@Id
 	private Empresa empresa;
 	
+	@Id
+	private Rol rol;
+	
 	@Column(name = "enabled")
 	private Boolean enabled;
 
@@ -44,5 +47,13 @@ public class UsuarioEmpresa {
 
 	public void setEnabled(Boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public Rol getRol() {
+		return rol;
+	}
+
+	public void setRol(Rol rol) {
+		this.rol = rol;
 	}
 }
