@@ -24,10 +24,12 @@ public class Region implements Serializable{
     @Column(name = "nombre", nullable = false)
     private String nombre;
 	
-	@ManyToOne
-    @JsonIgnoreProperties("region")
-    private Empresa empresa;
-
+	@OneToMany(mappedBy = "region")
+    private Set<Empresa> empresa = new HashSet<>();
+	
+	@OneToMany(mappedBy = "region")
+    private Set<Comuna> Comuna = new HashSet<>();
+	
 	public Integer getId() {
 		return id;
 	}
@@ -44,4 +46,11 @@ public class Region implements Serializable{
 		this.nombre = nombre;
 	}
 
+	public Set<Empresa> getEmpresa() {
+		return empresa;
+	}
+
+	public void setEmpresa(Set<Empresa> empresa) {
+		this.empresa = empresa;
+	}
 }

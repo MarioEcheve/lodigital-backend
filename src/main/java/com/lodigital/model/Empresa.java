@@ -3,10 +3,10 @@ package com.lodigital.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.Instant;
-import java.util.List;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 @Table(name = "empresa")
@@ -86,10 +86,15 @@ public class Empresa implements Serializable {
 
 	@Column(name = "fecha_modificacion")
 	private Instant fechaModificacion;
-	
-	@OneToMany(mappedBy = "empresa")
-    private Set<Region> region = new HashSet<>();
 
+	@ManyToOne
+    @JsonIgnoreProperties(value = "empresa", allowSetters = true)
+    private Region region;
+	
+	@ManyToOne
+    @JsonIgnoreProperties(value = "empresa", allowSetters = true)
+    private Comuna comuna;
+	
 	public Integer getIdEmpresa() {
 		return idEmpresa;
 	}
@@ -234,12 +239,19 @@ public class Empresa implements Serializable {
 		this.telefonoSecundarioContactoTecnico = telefonoSecundarioContactoTecnico;
 	}
 
-	public Set<Region> getRegion() {
+	public Region getRegion() {
 		return region;
 	}
 
-	public void setRegion(Set<Region> region) {
+	public void setRegion(Region region) {
 		this.region = region;
 	}
-	
+
+	public Comuna getComuna() {
+		return comuna;
+	}
+
+	public void setComuna(Comuna comuna) {
+		this.comuna = comuna;
+	}
 }
