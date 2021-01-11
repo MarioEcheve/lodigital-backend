@@ -21,5 +21,40 @@ public class UsuarioEmpresaImpl implements IUsuarioEmpresaService{
 		return usuarioEmpresaRepo.usuariosEmpresasByUser(idUsuario);
 	}
 	
+	@Override
+	public List<UsuarioEmpresa> usuariosEmpresasByCompany(Integer idEmpresa) {
+		// TODO Auto-generated method stub
+		return usuarioEmpresaRepo.usuariosEmpresasByCompany(idEmpresa);
+	}
+
+	@Override
+	public UsuarioEmpresa save(UsuarioEmpresa obj) {
+		// TODO Auto-generated method stub
+		return usuarioEmpresaRepo.save(obj);
+	}
+
+	@Override
+	public UsuarioEmpresa update(UsuarioEmpresa obj) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<UsuarioEmpresa> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public UsuarioEmpresa findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean delete(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

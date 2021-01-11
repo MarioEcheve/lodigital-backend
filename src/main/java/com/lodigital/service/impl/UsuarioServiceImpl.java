@@ -13,9 +13,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.User;
 import com.lodigital.model.Usuario;
 import com.lodigital.repo.IUsuarioRepo;
+import com.lodigital.service.IUsuarioService;
 
 @Service
-public class UsuarioServiceImpl implements UserDetailsService{
+public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 	@Autowired
 	private IUsuarioRepo usuarioRepo;
 	
@@ -38,6 +39,31 @@ public class UsuarioServiceImpl implements UserDetailsService{
 	public Usuario buscarPorRut(String rut) {
 		Usuario usuario = usuarioRepo.findOneByRut(rut);
 		return usuario;
+	}
+	@Override
+	public Usuario save(Usuario obj) {
+		// TODO Auto-generated method stub
+		return usuarioRepo.save(obj);
+	}
+	@Override
+	public Usuario update(Usuario obj) {
+		// TODO Auto-generated method stub
+		return usuarioRepo.save(obj);
+	}
+	@Override
+	public List<Usuario> listar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Usuario findById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public boolean delete(Integer id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 	
 }

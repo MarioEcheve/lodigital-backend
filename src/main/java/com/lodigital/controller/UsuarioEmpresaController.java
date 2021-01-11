@@ -22,9 +22,15 @@ public class UsuarioEmpresaController {
 	private IUsuarioEmpresaService service;
 	
 	@GetMapping(value = "/{idUsuario}")
-	public ResponseEntity<List<UsuarioEmpresa>> listar(@PathVariable("idUsuario") Integer idUsuario) {
+	public ResponseEntity<List<UsuarioEmpresa>> usuariosEmpresasByUser(@PathVariable("idUsuario") Integer idUsuario) {
 		List<UsuarioEmpresa> usuarioEmpresa = new ArrayList<>();
 		usuarioEmpresa = service.usuariosEmpresasByUser(idUsuario);
+		return new ResponseEntity<List<UsuarioEmpresa>>(usuarioEmpresa, HttpStatus.OK);
+	}
+	@GetMapping(value = "/usuariosEmpresasByCompany/{idEmpresa}")
+	public ResponseEntity<List<UsuarioEmpresa>> usuariosEmpresasByCompany(@PathVariable("idEmpresa") Integer idEmpresa) {
+		List<UsuarioEmpresa> usuarioEmpresa = new ArrayList<>();
+		usuarioEmpresa = service.usuariosEmpresasByCompany(idEmpresa);
 		return new ResponseEntity<List<UsuarioEmpresa>>(usuarioEmpresa, HttpStatus.OK);
 	}
 }

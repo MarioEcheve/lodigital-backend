@@ -1,5 +1,7 @@
 package com.lodigital.model;
 
+import java.time.Instant;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,6 +26,15 @@ public class UsuarioEmpresa {
 	
 	@Column(name = "enabled")
 	private Boolean enabled;
+	
+	@Column(name = "fecha_creacion")
+	private Instant fechaCreacion;
+	
+	@Column(name = "fecha_activacion")
+	private Instant fechaActivacion;
+	
+	@Column(name = "fecha_desactivacion")
+	private Instant fechaDesactivacion;
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -55,5 +66,29 @@ public class UsuarioEmpresa {
 
 	public void setRol(Rol rol) {
 		this.rol = rol;
+	}
+
+	public Instant getFechaCreacion() {
+		return fechaCreacion;
+	}
+
+	public void setFechaCreacion(Instant fechaCreacion) {
+		this.fechaCreacion = fechaCreacion;
+	}
+
+	public Instant getFechaActivacion() {
+		return fechaActivacion;
+	}
+
+	public void setFechaActivacion(Instant fechaActivacion) {
+		this.fechaActivacion = fechaActivacion;
+	}
+
+	public Instant getFechaDesactivacion() {
+		return fechaDesactivacion;
+	}
+
+	public void setFechaDesactivacion(Instant fechaDesactivacion) {
+		this.fechaDesactivacion = fechaDesactivacion;
 	}
 }

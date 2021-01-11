@@ -12,4 +12,9 @@ public interface IUsuarioEmpresaRepo extends JpaRepository<UsuarioEmpresa, Integ
 		
 	@Query("from UsuarioEmpresa ue where ue.usuario.idUsuario = :idUsuario and ue.enabled = true")
 	List<UsuarioEmpresa> usuariosEmpresasByUser(@Param("idUsuario") Integer idUsuario);
+	
+	
+	@Query("from UsuarioEmpresa ue where ue.empresa.idEmpresa = :idEmpresa")
+	List<UsuarioEmpresa> usuariosEmpresasByCompany(@Param("idEmpresa") Integer idEmpresa);
+	
 }
