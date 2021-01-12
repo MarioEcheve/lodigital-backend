@@ -65,5 +65,10 @@ public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public Usuario usuariosByRut(String rut) {
+		// TODO Auto-generated method stub
+		return usuarioRepo.findByRut(rut);
+	}
 	
 }
