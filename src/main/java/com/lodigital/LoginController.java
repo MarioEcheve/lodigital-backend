@@ -48,7 +48,7 @@ public class LoginController {
 				ResetToken token = new ResetToken();
 				token.setToken(UUID.randomUUID().toString());
 				token.setUsuario(us);
-				token.setExpiracion(1);
+				token.setExpiracion(10);
 				tokenService.guardar(token);
 				
 				Mail mail = new Mail();
@@ -57,9 +57,8 @@ public class LoginController {
 				mail.setSubject("RESTABLECER CONTRASEÑA - MEDIAPP");
 				Integer idUsuario = token.getUsuario().getIdUsuario();
 				Integer idEmpresa = 1;
-				Integer idRol = 2;
 				Map<String, Object> model = new HashMap<>();
-				String url = "http://localhost:4200/activar-usuario/" + token.getToken()+'/'+idUsuario;
+				String url = "http://localhost:4200/activar-usuario/" + token.getToken()+'/'+idEmpresa + '/' +idUsuario;
 				model.put("user", token.getUsuario().getUsername());
 				model.put("resetUrl", url);
 				mail.setModel(model);

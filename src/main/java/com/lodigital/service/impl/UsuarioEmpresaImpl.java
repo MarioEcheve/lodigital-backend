@@ -1,5 +1,6 @@
 package com.lodigital.service.impl;
 
+import java.time.Instant;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,5 +57,18 @@ public class UsuarioEmpresaImpl implements IUsuarioEmpresaService{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	@Override
+	public Integer guarda(Integer idEmpresa, Integer idRol, Integer idUsuario, Instant fechaCreacion, Boolean enabled) {
+		// TODO Auto-generated method stub
+		return usuarioEmpresaRepo.registrar(idEmpresa, idUsuario, idRol, fechaCreacion, enabled);
+	}
+
+	@Override
+	public List<UsuarioEmpresa> usuariosEmpresasByCompanyAndUser(Integer idEmpresa, Integer idUsuario) {
+		// TODO Auto-generated method stub
+		return usuarioEmpresaRepo.usuariosEmpresasByCompanyAndUser(idEmpresa,idUsuario);
+	}
+	
 	
 }

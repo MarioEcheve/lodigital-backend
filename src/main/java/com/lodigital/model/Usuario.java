@@ -7,17 +7,22 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "usuario")
 public class Usuario implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer idUsuario;
 	
 	@Column(name = "rut", nullable = false, unique = true)
@@ -56,7 +61,7 @@ public class Usuario implements Serializable{
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
 	
-	@Column(name = "clave", nullable = false)
+	@Column(name = "clave")
 	private String password;
 	
 	@Column(name = "estado", nullable = false)

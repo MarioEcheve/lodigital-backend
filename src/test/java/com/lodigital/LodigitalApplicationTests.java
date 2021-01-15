@@ -29,7 +29,7 @@ public class LodigitalApplicationTests {
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
-		us.setIdUsuario(1);
+		us.setIdUsuario(null);
 		us.setUsername("marioandreseche@gmail.com");
 		us.setPassword(bcrypt.encode("12345"));
 		us.setEnabled(true);
