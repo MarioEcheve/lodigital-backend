@@ -37,4 +37,16 @@ public class LoginServiceImpl implements ILoginService{
 		}
 		return rpta;
 	}
+
+	@Override
+	public Usuario verificarNombreUsuarioByRut(String rut) throws Exception {
+		Usuario us = null;
+		try {
+			us = loginRepo.verificarNombreUsuarioByRut(rut);
+			us = us != null ? us : new Usuario();
+		} catch (Exception e) {
+			us = new Usuario();
+		}
+		return us;
+	}
 }
