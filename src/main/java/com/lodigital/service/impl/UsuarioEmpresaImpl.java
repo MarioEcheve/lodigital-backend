@@ -59,15 +59,21 @@ public class UsuarioEmpresaImpl implements IUsuarioEmpresaService{
 	}
 
 	@Override
-	public Integer guarda(Integer idEmpresa, Integer idRol, Integer idUsuario, Instant fechaCreacion, Boolean enabled) {
+	public Integer guarda(Integer idEmpresa, Integer idUsuario, Integer idRol, Instant fechaCreacion, Integer idEstadoUsuario) {
 		// TODO Auto-generated method stub
-		return usuarioEmpresaRepo.registrar(idEmpresa, idUsuario, idRol, fechaCreacion, enabled);
+		return usuarioEmpresaRepo.registrar(idEmpresa, idUsuario, idRol, fechaCreacion, idEstadoUsuario);
 	}
 
 	@Override
 	public List<UsuarioEmpresa> usuariosEmpresasByCompanyAndUser(Integer idEmpresa, Integer idUsuario) {
 		// TODO Auto-generated method stub
 		return usuarioEmpresaRepo.usuariosEmpresasByCompanyAndUser(idEmpresa,idUsuario);
+	}
+
+	@Override
+	public Integer update(Integer idEmpresa, Integer idUsuario, Instant fechaActivacion, Integer idEstadoUsuario) {
+		// TODO Auto-generated method stub
+		return usuarioEmpresaRepo.actualizar(idEmpresa, idUsuario, fechaActivacion,idEstadoUsuario);
 	}
 	
 	

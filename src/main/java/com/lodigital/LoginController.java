@@ -48,13 +48,13 @@ public class LoginController {
 				ResetToken token = new ResetToken();
 				token.setToken(UUID.randomUUID().toString());
 				token.setUsuario(us);
-				token.setExpiracion(10);
+				token.setExpiracion(100);
 				tokenService.guardar(token);
 				
 				Mail mail = new Mail();
 				mail.setFrom("email.prueba.demo@gmail.com");
 				mail.setTo(us.getEmailPrincipal());
-				mail.setSubject("RESTABLECER CONTRASEÑA - MEDIAPP");
+				mail.setSubject("ACTIVAR USUARIO LO-DIGITAL");
 				Integer idUsuario = token.getUsuario().getIdUsuario();
 				Integer idEmpresa = 1;
 				Map<String, Object> model = new HashMap<>();

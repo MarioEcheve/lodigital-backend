@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -49,10 +50,17 @@ public class UsuarioEmpresaController {
 	@PostMapping(value = "/crearUsuarioEmpresa")
 	public ResponseEntity<Integer> crearUsuarioEmpresa(@Valid @RequestBody UsuarioEmpresa usuarioEmpresa){
 		Integer usr = service.guarda(usuarioEmpresa.getEmpresa().getIdEmpresa(), 
-									 usuarioEmpresa.getRol().getIdRol(), 
 									 usuarioEmpresa.getUsuario().getIdUsuario(), 
+									 usuarioEmpresa.getRol().getIdRol(),
 									 usuarioEmpresa.getFechaCreacion(), 
-									 usuarioEmpresa.getEnabled());
+									 usuarioEmpresa.getEstadoUsuario().getIdEstadoUsuario());
+		return new ResponseEntity<Integer>(usr, HttpStatus.OK);
+	}
+	@PutMapping(value = "/crearUsuarioEmpresa")
+	public ResponseEntity<Integer> actualizarUsuarioEmpresa(@Valid @RequestBody UsuarioEmpresa usuarioEmpresa){
+		Integer usr = service.update(usuarioEmpresa.getEmpresa().getIdEmpresa(), 
+									 usuarioEmpresa.getUsuario().getIdUsuario(), 
+									 usuarioEmpresa.getFechaActivacion(), usuarioEmpresa.getEstadoUsuario().getIdEstadoUsuario());
 		return new ResponseEntity<Integer>(usr, HttpStatus.OK);
 	}
 }

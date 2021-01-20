@@ -24,8 +24,8 @@ public class UsuarioEmpresa {
 	@Id
 	private Rol rol;
 	
-	@Column(name = "enabled")
-	private Boolean enabled;
+	@Id
+	private EstadoUsuario estadoUsuario;
 	
 	@Column(name = "fecha_creacion")
 	private Instant fechaCreacion;
@@ -50,14 +50,6 @@ public class UsuarioEmpresa {
 
 	public void setEmpresa(Empresa empresa) {
 		this.empresa = empresa;
-	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	public Rol getRol() {
@@ -90,5 +82,13 @@ public class UsuarioEmpresa {
 
 	public void setFechaDesactivacion(Instant fechaDesactivacion) {
 		this.fechaDesactivacion = fechaDesactivacion;
+	}
+
+	public EstadoUsuario getEstadoUsuario() {
+		return estadoUsuario;
+	}
+
+	public void setEstadoUsuario(EstadoUsuario estadoUsuario) {
+		this.estadoUsuario = estadoUsuario;
 	}
 }

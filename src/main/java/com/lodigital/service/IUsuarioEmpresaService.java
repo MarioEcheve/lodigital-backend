@@ -8,7 +8,8 @@ import com.lodigital.model.UsuarioEmpresa;
 public interface IUsuarioEmpresaService extends ICRUD<UsuarioEmpresa> {
 	List<UsuarioEmpresa> usuariosEmpresasByUser(Integer idUsuario);
 	List<UsuarioEmpresa> usuariosEmpresasByCompany(Integer idEmpresa);
-	Integer guarda(Integer idEmpresa,Integer idRol, Integer idUsuario, Instant fechaCreacion, Boolean enabled);
+	Integer guarda(Integer idEmpresa,Integer idUsuario, Integer idRol, Instant fechaCreacion, Integer idEstadoUsuario);
+	Integer update(Integer idEmpresa, Integer idUsuario, Instant fechaActivacion, Integer idEstadoUsuario);
 	List<UsuarioEmpresa> usuariosEmpresasByCompanyAndUser(Integer idEmpresa,Integer idUsuario);
 	
 }
