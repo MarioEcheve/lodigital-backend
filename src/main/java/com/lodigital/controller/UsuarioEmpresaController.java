@@ -16,8 +16,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lodigital.dto.UsuarioEmpresaDTO;
+import com.lodigital.model.ResetToken;
 import com.lodigital.model.Usuario;
 import com.lodigital.model.UsuarioEmpresa;
+import com.lodigital.service.IResetTokenService;
 import com.lodigital.service.IUsuarioEmpresaService;
 
 @RestController
@@ -26,6 +29,10 @@ public class UsuarioEmpresaController {
 	
 	@Autowired
 	private IUsuarioEmpresaService service;
+	
+	@Autowired
+	private IResetTokenService tokenService;
+	
 	
 	@GetMapping(value = "/{idUsuario}")
 	public ResponseEntity<List<UsuarioEmpresa>> usuariosEmpresasByUser(@PathVariable("idUsuario") Integer idUsuario) {
@@ -57,10 +64,14 @@ public class UsuarioEmpresaController {
 		return new ResponseEntity<Integer>(usr, HttpStatus.OK);
 	}
 	@PutMapping(value = "/crearUsuarioEmpresa")
-	public ResponseEntity<Integer> actualizarUsuarioEmpresa(@Valid @RequestBody UsuarioEmpresa usuarioEmpresa){
-		Integer usr = service.update(usuarioEmpresa.getEmpresa().getIdEmpresa(), 
-									 usuarioEmpresa.getUsuario().getIdUsuario(), 
-									 usuarioEmpresa.getFechaActivacion(), usuarioEmpresa.getEstadoUsuario().getIdEstadoUsuario());
+	public ResponseEntity<Integer> actualizarUsuarioEmpresa(@Valid @RequestBody UsuarioEmpresaDTO usuarioEmpresaDto){
+		Integer usr = service.update(usuarioEmpresaDto.getEmpresa().getIdEmpresa(), 
+									 usuarioEmpresaDto.getUsuario().getIdUsuario(), 
+									 usuarioEmpresaDto.getFechaActivacion(), 
+									 usuarioEmpresaDto.getEstadoUsuario().getIdEstadoUsuario());
+		
+		ResetToken rt = tokenService.findByToken(usuarioEmpresaDto.getToken());
+		tokenService.eliminar(rt);
 		return new ResponseEntity<Integer>(usr, HttpStatus.OK);
 	}
 }

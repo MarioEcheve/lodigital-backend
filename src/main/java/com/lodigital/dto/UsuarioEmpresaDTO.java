@@ -2,6 +2,8 @@ package com.lodigital.dto;
 
 import java.time.Instant;
 import com.lodigital.model.Empresa;
+import com.lodigital.model.EstadoUsuario;
+import com.lodigital.model.ResetToken;
 import com.lodigital.model.Rol;
 import com.lodigital.model.Usuario;
 
@@ -10,10 +12,11 @@ public class UsuarioEmpresaDTO {
 	private Usuario usuario;
 	private Empresa empresa;
 	private Rol rol;
-	private Boolean enabled;
+	private EstadoUsuario estadoUsuario;
 	private Instant fechaCreacion;
 	private Instant fechaActivacion;
 	private Instant fechaDesactivacion;
+	private String token;
 	
 	public Usuario getUsuario() {
 		return usuario;
@@ -33,12 +36,6 @@ public class UsuarioEmpresaDTO {
 	public void setRol(Rol rol) {
 		this.rol = rol;
 	}
-	public Boolean getEnabled() {
-		return enabled;
-	}
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
-	}
 	public Instant getFechaCreacion() {
 		return fechaCreacion;
 	}
@@ -56,5 +53,17 @@ public class UsuarioEmpresaDTO {
 	}
 	public void setFechaDesactivacion(Instant fechaDesactivacion) {
 		this.fechaDesactivacion = fechaDesactivacion;
+	}
+	public EstadoUsuario getEstadoUsuario() {
+		return estadoUsuario;
+	}
+	public void setEstadoUsuario(EstadoUsuario estadoUsuario) {
+		this.estadoUsuario = estadoUsuario;
+	}
+	public String getToken() {
+		return token;
+	}
+	public void setToken(String token) {
+		this.token = token;
 	}
 }
