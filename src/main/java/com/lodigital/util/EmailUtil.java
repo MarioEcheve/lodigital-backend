@@ -20,7 +20,7 @@ public class EmailUtil {
 	@Autowired
 	private SpringTemplateEngine templateEngine;
 	
-	public void enviarMail(Mail mail) {
+	public void enviarMailActivarUsuario(Mail mail) {
 		try {
 			MimeMessage message = emailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
@@ -34,7 +34,28 @@ public class EmailUtil {
 			helper.setText(html, true);
 			helper.setSubject(mail.getSubject());
 			helper.setFrom(mail.getFrom());
+			System.out.print("entra");
+			emailSender.send(message);
 			
+		}catch(Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+	public void enviarCorreoReestablecerPassword(Mail mail) {
+		try {
+			MimeMessage message = emailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
+			
+			Context context = new Context();
+			context.setVariables(mail.getModel());
+			
+			String html = templateEngine.process("email/restablecer-template", context);
+			
+			helper.setTo(mail.getTo());
+			helper.setText(html, true);
+			helper.setSubject(mail.getSubject());
+			helper.setFrom(mail.getFrom());
+			System.out.print("entra");
 			emailSender.send(message);
 			
 		}catch(Exception e) {
