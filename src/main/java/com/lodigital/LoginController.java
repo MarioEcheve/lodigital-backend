@@ -16,10 +16,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import com.lodigital.dto.ReestablecerPasswordDTO;
 import com.lodigital.model.ResetToken;
 import com.lodigital.model.Usuario;
 import com.lodigital.service.ILoginService;
 import com.lodigital.service.IResetTokenService;
+import com.lodigital.service.IUsuarioService;
 import com.lodigital.util.EmailUtil;
 import com.lodigital.util.Mail;
 
@@ -39,6 +41,9 @@ public class LoginController {
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
+	@Autowired
+	private IUsuarioService usuarioService;
+	
 	@PostMapping(value = "/enviarCorreoActivarUsuario", consumes = MediaType.TEXT_PLAIN_VALUE)
 	public ResponseEntity<Integer> enviarCorreoActivarUsuario(@RequestBody String rut) {
 		int rpta = 0;
@@ -49,7 +54,7 @@ public class LoginController {
 				ResetToken token = new ResetToken();
 				token.setToken(UUID.randomUUID().toString());
 				token.setUsuario(us);
-				token.setExpiracion(100);
+				token.setExpiracion(2880);
 				tokenService.guardar(token);
 				
 				Mail mail = new Mail();
@@ -72,31 +77,38 @@ public class LoginController {
 		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/enviarCorreoReestablecerPassword", consumes = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<Integer> enviarCorreoReestablecerPassword(@RequestBody String rut) {
+	@PostMapping(value = "/enviarCorreoReestablecerPassword", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> enviarCorreoReestablecerPassword(@RequestBody ReestablecerPasswordDTO resReestablecerPasswordDTO) {
 		int rpta = 0;
 		try {
-			Usuario us = service.verificarNombreUsuarioByRut(rut);
+			Usuario us = service.verificarNombreUsuarioByRut(resReestablecerPasswordDTO.getRut());
 			if (us != null && us.getIdUsuario() > 0) {
 				
 				ResetToken token = new ResetToken();
 				token.setToken(UUID.randomUUID().toString());
 				token.setUsuario(us);
-				token.setExpiracion(100);
+				token.setExpiracion(10);
 				tokenService.guardar(token);
+				
+				// obtenemos la clave Provisoria Generada por ramdom
+				String claveNueva = service.generarClave();
+				
+				us.setPasswordProvisorio(bcrypt.encode(claveNueva));
+				us.setPassword(bcrypt.encode(claveNueva));
+				
+				usuarioService.save(us);
 				
 				Mail mail = new Mail();
 				mail.setFrom("aviso@lodigital.cl");
-				mail.setTo(us.getEmailPrincipal());
+				mail.setTo(resReestablecerPasswordDTO.getCorreo());
 				mail.setSubject("REESTABLECER CONTRASEÑA LO-DIGITAL");
 				Integer idUsuario = token.getUsuario().getIdUsuario();
-				Integer idEmpresa = 1;
 				Map<String, Object> model = new HashMap<>();
 				String url = "http://localhost:4200/restablecer-clave/"+ token.getToken()+'/' +idUsuario;
 				model.put("user", token.getUsuario().getUsername());
 				model.put("resetUrl", url);
 				mail.setModel(model);
-				emailUtil.enviarCorreoReestablecerPassword(mail);
+				emailUtil.enviarCorreoReestablecerPassword(mail, claveNueva);
 				rpta = 1;
 			}
 		} catch(Exception e) {
@@ -105,14 +117,20 @@ public class LoginController {
 		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
 	}
 	
-	@PostMapping(value = "/restablecer/{token}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<Integer> restablecerClave(@PathVariable("token") String token, @RequestBody String clave ) {
+	@PostMapping(value = "/restablecer", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Integer> restablecerClave(@RequestBody ReestablecerPasswordDTO resReestablecerPasswordDTO ) {
 		int rpta = 0;
 		try {
-			ResetToken rt = tokenService.findByToken(token);
-			String claveHash = bcrypt.encode(clave);
-			rpta = service.cambiarClave(claveHash, rt.getUsuario().getUsername());
-			tokenService.eliminar(rt);
+			ResetToken rt = tokenService.findByToken(resReestablecerPasswordDTO.getToken());
+			String claveProvisoriaIngresada = resReestablecerPasswordDTO.getClaveProvisoria();
+			String claveProvisoriaRegistrada = rt.getUsuario().getPasswordProvisorio();
+			Boolean resultadoValidacionClave  = bcrypt.matches(claveProvisoriaIngresada, claveProvisoriaRegistrada);
+			
+			if(resultadoValidacionClave) {
+				String claveHash = bcrypt.encode(resReestablecerPasswordDTO.getClave());
+				rpta = service.cambiarClave(claveHash, rt.getUsuario().getUsername());
+				tokenService.eliminar(rt);
+			}
 		} catch (Exception e) {
 			return new ResponseEntity<Integer>(rpta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}

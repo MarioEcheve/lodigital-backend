@@ -34,20 +34,21 @@ public class EmailUtil {
 			helper.setText(html, true);
 			helper.setSubject(mail.getSubject());
 			helper.setFrom(mail.getFrom());
-			System.out.print("entra");
 			emailSender.send(message);
 			
 		}catch(Exception e) {
 			throw new RuntimeException(e);
 		}
 	}
-	public void enviarCorreoReestablecerPassword(Mail mail) {
+	public void enviarCorreoReestablecerPassword(Mail mail, String claveProvisoria) {
 		try {
 			MimeMessage message = emailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
 			
 			Context context = new Context();
 			context.setVariables(mail.getModel());
+			context.setVariable("claveProvisoria", "su Clave Provisoria es : "+claveProvisoria);
+			System.out.print(context.getVariableNames());
 			
 			String html = templateEngine.process("email/restablecer-template", context);
 			
@@ -55,7 +56,6 @@ public class EmailUtil {
 			helper.setText(html, true);
 			helper.setSubject(mail.getSubject());
 			helper.setFrom(mail.getFrom());
-			System.out.print("entra");
 			emailSender.send(message);
 			
 		}catch(Exception e) {

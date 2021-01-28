@@ -64,6 +64,9 @@ public class Usuario implements Serializable{
 	@Column(name = "clave")
 	private String password;
 	
+	@Column(name = "clave_provisoria")
+	private String passwordProvisorio;
+	
 	@Column(name = "estado", nullable = false)
 	private boolean enabled;
 	
@@ -187,5 +190,13 @@ public class Usuario implements Serializable{
 
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+
+	public String getPasswordProvisorio() {
+		return passwordProvisorio;
+	}
+
+	public void setPasswordProvisorio(String passwordProvisorio) {
+		this.passwordProvisorio = passwordProvisorio;
 	}
 }

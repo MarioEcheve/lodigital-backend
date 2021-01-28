@@ -2,7 +2,6 @@ package com.lodigital.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -80,6 +79,4 @@ public class UsuarioEmpresaPK  implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 }

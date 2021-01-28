@@ -10,6 +10,7 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 	
 	//select * from usuario where username = ?
 	Usuario findOneByRut(String rut);
-	@Query(name="select u from u u where u.rut = :rut", nativeQuery=true)
+	
+	@Query(name="select u from u u where UPPER(u.rut) = UPPER(:rut)", nativeQuery=true)
 	Usuario findByRut(@PathVariable("rut") String rut);
 }

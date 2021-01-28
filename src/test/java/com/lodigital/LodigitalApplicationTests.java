@@ -66,21 +66,20 @@ public class LodigitalApplicationTests {
 	}
 	
 	
-	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
 		us.setIdUsuario(null);
-		us.setUsername("marioandreseche@gmail.com");
+		us.setUsername("fvilchessoleman@gmail.com");
 		us.setPassword(bcrypt.encode("12345"));
 		us.setEnabled(true);
-		us.setApellidoPaterno("Echeverria");
-		us.setApellidoMaterno("Lopez");
-		us.setEmailPrincipal("marioandreseche@gmail.com");
+		us.setApellidoPaterno("Vilches");
+		us.setApellidoMaterno("Soleman");
+		us.setEmailPrincipal("fvilchessoleman@gmail.com");
 		us.setEmailSecundario(null);
-		us.setProfesionOficio("ingeniero en informatica");
-		us.setNombre("Mario Andrés");
-		us.setTelefonoPrincipal("944086220");
-		us.setRut("18011897-7");
+		us.setProfesionOficio("ingeniero en construcción");
+		us.setNombre("Fernando Alejandro");
+		us.setTelefonoPrincipal("944086220");		
+		us.setRut("13224233-k");
 		Usuario retorno = usuarioRepo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));
@@ -90,7 +89,7 @@ public class LodigitalApplicationTests {
 	public void crearEmpresa() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdEmpresa(1);
+		empresa.setIdEmpresa(2);
 		empresa.setCargoFuncionContactoComercial(" funcion contacto comercial");
 		empresa.setCargoFuncionContactoTecnico("funcion contacto tecnico");
 		empresa.setDireccion(" sin direccion ");

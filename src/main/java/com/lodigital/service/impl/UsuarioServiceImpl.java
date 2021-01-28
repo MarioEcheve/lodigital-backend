@@ -23,8 +23,9 @@ public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 	// se implementa de esta forma el loadbyusername ya que no se puede modificr el nombre
 	@Override
 	public UserDetails loadUserByUsername(String rut) throws UsernameNotFoundException {
-		Usuario usuario = usuarioRepo.findOneByRut(rut);
+		Usuario usuario = usuarioRepo.findByRut(rut);
 		
+		System.out.print(usuario);
 		if(usuario == null) {
 			throw new UsernameNotFoundException(String.format("Usuario no existe", rut));
 		}
