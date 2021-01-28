@@ -101,9 +101,9 @@ public class LodigitalApplicationTests {
 		empresa.setIdEmpresa(null);
 		empresa.setNombreContactoComercial("Felipe");
 		empresa.setNombreContactoTecnico("Marcelo");
-		empresa.setNombreFantasia("Empresa de fantasia");
-		empresa.setRazonSocial("Constructora Ltda Coquimbo");
-		empresa.setRut("145215689");
+		empresa.setNombreFantasia("Empresa de Prueba 2 ");
+		empresa.setRazonSocial("Empresa de Prueba 2 ");
+		empresa.setRut("10.132.316-1");
 		empresa.setTelefonoPrincipalContactoComercial("944086225");
 		empresa.setTelefonoPrincipalContactoTecnico("944086229");
 		empresa.setTelefonoSecundarioContactoComercial("944086228");
