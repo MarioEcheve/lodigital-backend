@@ -2,10 +2,11 @@ package com.lodigital.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
+import javax.persistence.Embeddable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+@Embeddable
 public class UsuarioEmpresaPK  implements Serializable {
 	
 	@ManyToOne
@@ -19,6 +20,10 @@ public class UsuarioEmpresaPK  implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_rol", nullable = false)
 	private Rol rol;
+	
+	@ManyToOne
+	@JoinColumn(name = "id_estado_usuario", nullable = false)
+	private EstadoUsuario estadoUsuario;
 
 	public Usuario getUsuario() {
 		return usuario;
@@ -74,6 +79,4 @@ public class UsuarioEmpresaPK  implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 }

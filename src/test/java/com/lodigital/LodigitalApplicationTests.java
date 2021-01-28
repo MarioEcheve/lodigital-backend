@@ -9,9 +9,16 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.lodigital.model.Empresa;
+import com.lodigital.model.EstadoUsuario;
+import com.lodigital.model.Region;
+import com.lodigital.model.Rol;
 import com.lodigital.model.Usuario;
 import com.lodigital.repo.IEmpresaRepo;
+import com.lodigital.repo.IEstadoUsuarioRepo;
+import com.lodigital.repo.IRegionRepo;
+import com.lodigital.repo.IRolRepo;
 import com.lodigital.repo.IUsuarioRepo;
+import com.lodigital.service.IEstadoService;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -26,21 +33,53 @@ public class LodigitalApplicationTests {
 	@Autowired
 	private IEmpresaRepo empresaRepo;
 	
+	@Autowired
+	private IRolRepo rolRepo;
+	
+	@Autowired
+	private IEstadoUsuarioRepo estadoUsuarioRepo;
+	
+	@Autowired
+	private IRegionRepo regionRepo;
+	
+	
 	@Test
+	public void crearEstadoUsuario() {
+		EstadoUsuario estadoActivo = new EstadoUsuario();
+		estadoActivo.setIdEstadoUsuario(1);
+		estadoActivo.setDescripcion("activo");
+		
+		estadoUsuarioRepo.save(estadoActivo);
+		
+		EstadoUsuario estadoPendiente = new EstadoUsuario();
+		estadoPendiente.setIdEstadoUsuario(2);
+		estadoPendiente.setDescripcion("pendiente");
+		estadoUsuarioRepo.save(estadoPendiente);
+		
+		EstadoUsuario estadoInactivo = new EstadoUsuario();
+		estadoInactivo.setIdEstadoUsuario(3);
+		estadoInactivo.setDescripcion("inactivo");
+		
+		estadoUsuarioRepo.save(estadoInactivo);
+		
+		assertTrue(true);
+	}
+	
+	
 	public void crearUsuario() {
 		Usuario us = new Usuario();
-		us.setIdUsuario(2);
-		us.setUsername("fvilches@gmail.com");
+		us.setIdUsuario(null);
+		us.setUsername("fvilchessoleman@gmail.com");
 		us.setPassword(bcrypt.encode("12345"));
 		us.setEnabled(true);
-		us.setApellidoPaterno("soleman");
-		us.setApellidoMaterno("vilches");
+		us.setApellidoPaterno("Vilches");
+		us.setApellidoMaterno("Soleman");
 		us.setEmailPrincipal("fvilchessoleman@gmail.com");
 		us.setEmailSecundario(null);
-		us.setProfesionOficio("ingeniero");
-		us.setNombre("Fernando");
-		us.setTelefonoPrincipal("944086220");
-		us.setRut("123455678-9");
+		us.setProfesionOficio("ingeniero en construcción");
+		us.setNombre("Fernando Alejandro");
+		us.setTelefonoPrincipal("944086220");		
+		us.setRut("13224233-k");
 		Usuario retorno = usuarioRepo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));
@@ -50,7 +89,7 @@ public class LodigitalApplicationTests {
 	public void crearEmpresa() {
 		
 		Empresa empresa = new Empresa();
-		empresa.setIdEmpresa(1);
+		empresa.setIdEmpresa(2);
 		empresa.setCargoFuncionContactoComercial(" funcion contacto comercial");
 		empresa.setCargoFuncionContactoTecnico("funcion contacto tecnico");
 		empresa.setDireccion(" sin direccion ");
@@ -74,5 +113,33 @@ public class LodigitalApplicationTests {
 		
 		assertTrue(true);
 	}
+	
+	@Test
+	public void crearRol() {
+		
+		Rol rolSuperUsuario = new Rol();
+		rolSuperUsuario.setIdRol(1);
+		rolSuperUsuario.setDescripcion("Super Usuario");
+		rolSuperUsuario.setNombre("Super Usuario");
+		rolRepo.save(rolSuperUsuario);
+		
+		Rol rolUsuario = new Rol();
+		rolUsuario.setIdRol(2);
+		rolUsuario.setDescripcion("Usuario");
+		rolUsuario.setNombre("Usuario");
+		rolRepo.save(rolUsuario);
+		
+		assertTrue(true);
+	}
 
+	@Test
+	public void crearRegion() {
+		
+		Region region = new Region();
+		region.setId(1);
+		region.setNombre("IV- Region de Coquimbo");
+		
+		regionRepo.save(region);
+	}
+	
 }

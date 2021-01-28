@@ -18,4 +18,7 @@ public interface ILoginRepo extends JpaRepository<Usuario, Integer>{
 	@Modifying
 	@Query("UPDATE Usuario us SET us.password = :clave WHERE us.username = :nombre ")
 	void cambiarClave(@Param("clave") String clave, @Param("nombre") String nombre) throws Exception;
+	
+	@Query("FROM Usuario us WHERE us.rut = :rut")
+	Usuario verificarNombreUsuarioByRut(@Param("rut") String rut) throws Exception;
 }
