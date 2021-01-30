@@ -26,10 +26,16 @@ public class UsuarioController {
 	@Autowired
 	private BCryptPasswordEncoder bcrypt;
 	
-	@PutMapping
-	public ResponseEntity<Usuario> modificar(@Valid @RequestBody Usuario usuario){
+	@PutMapping(value = "/modificarActivarUsuario")
+	public ResponseEntity<Usuario> modificarActivarUsuario(@Valid @RequestBody Usuario usuario){
 		String password = bcrypt.encode(usuario.getPassword());
 		usuario.setPassword(password);
+		Usuario usr = usuarioService.update(usuario);
+		return new ResponseEntity<Usuario>(usr, HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/modificar")
+	public ResponseEntity<Usuario> modificar(@Valid @RequestBody Usuario usuario){;
 		Usuario usr = usuarioService.update(usuario);
 		return new ResponseEntity<Usuario>(usr, HttpStatus.OK);
 	}

@@ -15,7 +15,7 @@ import com.lodigital.model.UsuarioEmpresa;
 
 public interface IUsuarioEmpresaRepo extends JpaRepository<UsuarioEmpresa, Integer> {
 		
-	@Query("from UsuarioEmpresa ue where ue.usuario.idUsuario = :idUsuario")
+	@Query("from UsuarioEmpresa ue where ue.usuario.idUsuario = :idUsuario and ue.estadoUsuario.idEstadoUsuario = 1")
 	List<UsuarioEmpresa> usuariosEmpresasByUser(@Param("idUsuario") Integer idUsuario);
 	
 	
