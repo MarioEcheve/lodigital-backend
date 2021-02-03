@@ -3,6 +3,7 @@ package com.lodigital.controller;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.lodigital.dto.ReestablecerPasswordDTO;
 import com.lodigital.model.Usuario;
 import com.lodigital.service.IUsuarioService;
 
@@ -50,6 +52,27 @@ public class UsuarioController {
 	public ResponseEntity<Usuario> crearUsuario(@Valid @RequestBody Usuario usuario){
 		Usuario usr = usuarioService.save(usuario);
 		return new ResponseEntity<Usuario>(usr, HttpStatus.OK);
+	}
+	
+	@PostMapping(value = "/cambiarClave", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity<Integer> cambiarClave(@RequestBody ReestablecerPasswordDTO reestablecerPasswordDTO ) {
+		int rpta = 0;
+		try {
+			ResponseEntity<Usuario> us = usuariosByRut(reestablecerPasswordDTO.getRut());
+			String ClaveAntigua =  us.getBody().getPassword();
+			String claveValidacion = reestablecerPasswordDTO.getClave();
+			String claveNueva  =  bcrypt.encode(reestablecerPasswordDTO.getClaveNueva());
+			Boolean resultadoValidacionClave  = bcrypt.matches(claveValidacion, ClaveAntigua);
+			
+			if(resultadoValidacionClave) {
+				rpta = usuarioService.cambiarClaveUsuario(claveNueva,reestablecerPasswordDTO.getRut());
+			}else {
+				return new ResponseEntity<Integer>(rpta, HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		}catch (Exception e) {
+			return new ResponseEntity<Integer>(rpta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
 	}
 	
 }

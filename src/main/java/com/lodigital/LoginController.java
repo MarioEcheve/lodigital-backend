@@ -126,6 +126,7 @@ public class LoginController {
 			String claveProvisoriaIngresada = resReestablecerPasswordDTO.getClaveProvisoria();
 			String claveProvisoriaRegistrada = rt.getUsuario().getPasswordProvisorio();
 			Boolean resultadoValidacionClave  = bcrypt.matches(claveProvisoriaIngresada, claveProvisoriaRegistrada);
+			    
 			
 			if(resultadoValidacionClave) {
 				String claveHash = bcrypt.encode(resReestablecerPasswordDTO.getClave());

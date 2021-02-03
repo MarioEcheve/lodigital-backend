@@ -55,4 +55,10 @@ public class EmpresaServiceImpl implements IEmpresaService{
 		return  usuarioRepo.findByRut(rut);
 		
 	}
+
+	@Override
+	public Empresa empresaByRutEmpresa(String rut) {
+		// TODO Auto-generated method stub
+		return empresaRepo.findOneByRut(rut);
+	}
 }

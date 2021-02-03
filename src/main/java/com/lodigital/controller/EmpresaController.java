@@ -38,6 +38,12 @@ public class EmpresaController {
 		return new ResponseEntity<Usuario>(usr, HttpStatus.OK);
 	}
 	
+	@GetMapping(value = "/empresaByRut/{rut}")
+	public ResponseEntity<Empresa> empresaByRut(@PathVariable("rut") String rut) {
+		Empresa usr = empresaService.empresaByRutEmpresa(rut);
+		return new ResponseEntity<Empresa>(usr, HttpStatus.OK);
+	}
+	
 	@PutMapping
 	public ResponseEntity<Empresa> modificar(@Valid @RequestBody Empresa empresa){
 		Empresa emp = empresaService.update(empresa);
