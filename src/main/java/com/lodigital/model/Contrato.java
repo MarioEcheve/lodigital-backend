@@ -8,7 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name = "contrato")
@@ -76,6 +79,26 @@ public class Contrato  implements Serializable{
 	
 	@Column(name="email_contacto")
 	private String emailContacto;
+	
+	@ManyToOne
+    @JsonIgnoreProperties(value = "contrato", allowSetters = true)
+    private TipoContrato tipoContrato;
+	
+	@ManyToOne
+    @JsonIgnoreProperties(value = "contrato", allowSetters = true)
+    private TipoModalidad tipoModalidad;
+	
+	@ManyToOne
+    @JsonIgnoreProperties(value = "contrato", allowSetters = true)
+    private EstadoContrato estadoContrato;
+	
+	@ManyToOne
+    @JsonIgnoreProperties(value = "contrato", allowSetters = true)
+    private Region region;
+	
+	@ManyToOne
+    @JsonIgnoreProperties(value = "contrato", allowSetters = true)
+    private Comuna comuna;
 
 	public Integer getId() {
 		return id;
@@ -236,5 +259,44 @@ public class Contrato  implements Serializable{
 	public void setEmailContacto(String emailContacto) {
 		this.emailContacto = emailContacto;
 	}
-	
+
+	public TipoContrato getTipoContrato() {
+		return tipoContrato;
+	}
+
+	public void setTipoContrato(TipoContrato tipoContrato) {
+		this.tipoContrato = tipoContrato;
+	}
+
+	public TipoModalidad getTipoModalidad() {
+		return tipoModalidad;
+	}
+
+	public void setTipoModalidad(TipoModalidad tipoModalidad) {
+		this.tipoModalidad = tipoModalidad;
+	}
+
+	public Region getRegion() {
+		return region;
+	}
+
+	public void setRegion(Region region) {
+		this.region = region;
+	}
+
+	public Comuna getComuna() {
+		return comuna;
+	}
+
+	public void setComuna(Comuna comuna) {
+		this.comuna = comuna;
+	}
+
+	public EstadoContrato getEstadoContrato() {
+		return estadoContrato;
+	}
+
+	public void setEstadoContrato(EstadoContrato estadoContrato) {
+		this.estadoContrato = estadoContrato;
+	}
 }
