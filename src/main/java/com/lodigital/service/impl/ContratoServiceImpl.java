@@ -1,6 +1,7 @@
 package com.lodigital.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -35,8 +36,8 @@ public class ContratoServiceImpl implements IContratoService{
 
 	@Override
 	public Contrato findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Contrato> cn = contratoRepo.findById(id);
+		return cn.isPresent() ? cn.get() : new Contrato();
 	}
 
 	@Override

@@ -75,6 +75,12 @@ public class UsuarioEmpresaImpl implements IUsuarioEmpresaService{
 		// TODO Auto-generated method stub
 		return usuarioEmpresaRepo.actualizar(idEmpresa, idUsuario, fechaActivacion,idEstadoUsuario);
 	}
+
+	@Override
+	public Integer editar(Integer idEmpresa, Integer idUsuario,Integer idRol) {
+		// TODO Auto-generated method stub
+		return usuarioEmpresaRepo.editar(idEmpresa, idUsuario, idRol);
+	}
 	
 	
 }

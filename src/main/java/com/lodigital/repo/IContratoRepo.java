@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface IContratoRepo extends JpaRepository<Contrato, Integer>{
 
-	@Query("from Contrato c where c.idEmpresaMandante= :idEmpresa or c.idEmpresaContratista= :idEmpresa")
+	@Query("from Contrato c where c.idEmpresaMandante= :idEmpresa or c.idEmpresaContratista= :idEmpresa order by 1 desc")
 	List<Contrato> contratoByCompany(@Param("idEmpresa") Integer idEmpresa);
 }

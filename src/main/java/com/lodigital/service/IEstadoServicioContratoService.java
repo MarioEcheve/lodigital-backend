@@ -1,5 +1,7 @@
 package com.lodigital.service;
 
-public interface IEstadoServicioContratoService {
+import com.lodigital.model.EstadoServicioContrato;
+
+public interface IEstadoServicioContratoService extends ICRUD<EstadoServicioContrato>{
 
 }

@@ -37,4 +37,9 @@ public interface IUsuarioEmpresaRepo extends JpaRepository<UsuarioEmpresa, Integ
 	Integer actualizar(@Param("idEmpresa") Integer idEmpresa, @Param("idUsuario") Integer idUsuario,
 					   @Param("fechaActivacion") Instant fechaActivacion,@Param("idEstadoUsuario") Integer idEstadoUsuario );
 	
+	@Transactional
+	@Modifying
+	@Query(value = "UPDATE usuario_empresa SET id_rol = :idRol WHERE id_empresa= :idEmpresa and id_usuario= :idUsuario", nativeQuery = true)
+	Integer editar(@Param("idEmpresa") Integer idEmpresa, @Param("idUsuario") Integer idUsuario, @Param("idRol") Integer idRol);
+	
 }

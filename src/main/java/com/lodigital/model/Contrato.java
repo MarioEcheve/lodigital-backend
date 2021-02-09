@@ -94,6 +94,10 @@ public class Contrato  implements Serializable{
 	
 	@ManyToOne
     @JsonIgnoreProperties(value = "contrato", allowSetters = true)
+    private EstadoServicioContrato estadoServicioContrato;
+	
+	@ManyToOne
+    @JsonIgnoreProperties(value = "contrato", allowSetters = true)
     private Region region;
 	
 	@ManyToOne
@@ -298,5 +302,13 @@ public class Contrato  implements Serializable{
 
 	public void setEstadoContrato(EstadoContrato estadoContrato) {
 		this.estadoContrato = estadoContrato;
+	}
+
+	public EstadoServicioContrato getEstadoServicioContrato() {
+		return estadoServicioContrato;
+	}
+
+	public void setEstadoServicioContrato(EstadoServicioContrato estadoServicioContrato) {
+		this.estadoServicioContrato = estadoServicioContrato;
 	}
 }
