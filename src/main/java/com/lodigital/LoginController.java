@@ -69,7 +69,7 @@ public class LoginController {
 				model.put("user", token.getUsuario().getUsername());
 				model.put("resetUrl", url);
 				mail.setModel(model);
-				emailUtil.enviarMailActivarUsuario(mail);
+				emailUtil.enviarMailActivarUsuario(mail, us);
 				rpta = 1;
 			}
 		} catch(Exception e) {
