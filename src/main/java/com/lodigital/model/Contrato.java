@@ -103,7 +103,20 @@ public class Contrato  implements Serializable{
 	@ManyToOne
     @JsonIgnoreProperties(value = "contrato", allowSetters = true)
     private Comuna comuna;
-
+	
+	@Column(name="mandante_editar_contrato")
+	private Boolean mandanteEditarContrato;
+	
+	@Column(name="contratista_editar_contrato")
+	private Boolean contratistaEditarContrato;
+	
+	@Column(name="mandante_crear_libro")
+	private Boolean mandanteCrearLibro;
+	
+	@Column(name="contratista_crear_libro")
+	private Boolean contratistaCrearLibro;
+	
+	
 	public Integer getId() {
 		return id;
 	}
@@ -310,5 +323,37 @@ public class Contrato  implements Serializable{
 
 	public void setEstadoServicioContrato(EstadoServicioContrato estadoServicioContrato) {
 		this.estadoServicioContrato = estadoServicioContrato;
+	}
+
+	public Boolean getMandanteEditarContrato() {
+		return mandanteEditarContrato;
+	}
+
+	public void setMandanteEditarContrato(Boolean mandanteEditarContrato) {
+		this.mandanteEditarContrato = mandanteEditarContrato;
+	}
+
+	public Boolean getContratistaEditarContrato() {
+		return contratistaEditarContrato;
+	}
+
+	public void setContratistaEditarContrato(Boolean contratistaEditarContrato) {
+		this.contratistaEditarContrato = contratistaEditarContrato;
+	}
+
+	public Boolean getMandanteCrearLibro() {
+		return mandanteCrearLibro;
+	}
+
+	public void setMandanteCrearLibro(Boolean mandanteCrearLibro) {
+		this.mandanteCrearLibro = mandanteCrearLibro;
+	}
+
+	public Boolean getContratistaCrearLibro() {
+		return contratistaCrearLibro;
+	}
+
+	public void setContratistaCrearLibro(Boolean contratistaCrearLibro) {
+		this.contratistaCrearLibro = contratistaCrearLibro;
 	}
 }
