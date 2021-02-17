@@ -44,6 +44,9 @@ public class Contrato  implements Serializable{
 	@Column(nullable = true)
 	private String monto;
 	
+	@Column(nullable = true)
+	private String plazo;
+	
 	@Column(name="observacion")
 	private String observaciones;
 	
@@ -103,6 +106,17 @@ public class Contrato  implements Serializable{
 	@ManyToOne
     @JsonIgnoreProperties(value = "contrato", allowSetters = true)
     private Comuna comuna;
+	
+	
+	@ManyToOne
+	@JsonIgnoreProperties(value="contrato", allowSetters = true)
+	private TipoMontoContrato tipoMontoContrato;
+	
+	
+	@ManyToOne
+	@JsonIgnoreProperties(value="contrato", allowSetters = true)
+	private TipoValorContrato tipoValorContrato;
+	
 	
 	@Column(name="mandante_editar_contrato")
 	private Boolean mandanteEditarContrato;
@@ -355,5 +369,29 @@ public class Contrato  implements Serializable{
 
 	public void setContratistaCrearLibro(Boolean contratistaCrearLibro) {
 		this.contratistaCrearLibro = contratistaCrearLibro;
+	}
+
+	public String getPlazo() {
+		return plazo;
+	}
+
+	public void setPlazo(String plazo) {
+		this.plazo = plazo;
+	}
+
+	public TipoMontoContrato getTipoMontoContrato() {
+		return tipoMontoContrato;
+	}
+
+	public void setTipoMontoContrato(TipoMontoContrato tipoMontoContrato) {
+		this.tipoMontoContrato = tipoMontoContrato;
+	}
+
+	public TipoValorContrato getTipoValorContrato() {
+		return tipoValorContrato;
+	}
+
+	public void setTipoValorContrato(TipoValorContrato tipoValorContrato) {
+		this.tipoValorContrato = tipoValorContrato;
 	}
 }
