@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 
+import com.lodigital.model.Usuario;
+
 @Component
 public class EmailUtil {
 	
@@ -20,12 +22,14 @@ public class EmailUtil {
 	@Autowired
 	private SpringTemplateEngine templateEngine;
 	
-	public void enviarMailActivarUsuario(Mail mail) {
+	public void enviarMailActivarUsuario(Mail mail,Usuario usuario) {
 		try {
 			MimeMessage message = emailSender.createMimeMessage();
 			MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
 			
+			String nombreUsuarioCompleto = usuario.getNombre()+' '+ usuario.getApellidoPaterno()+' '+ usuario.getApellidoMaterno();
 			Context context = new Context();
+			context.setVariable("nombreUsuarioCompleto",""+nombreUsuarioCompleto);
 			context.setVariables(mail.getModel());
 			
 			String html = templateEngine.process("email/email-template", context);

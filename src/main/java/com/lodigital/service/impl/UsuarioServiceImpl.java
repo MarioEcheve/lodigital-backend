@@ -71,5 +71,16 @@ public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 		// TODO Auto-generated method stub
 		return usuarioRepo.findByRut(rut);
 	}
+	@Override
+	public int cambiarClaveUsuario(String clave, String rut) {
+		int rpta = 0;
+		try {
+			usuarioRepo.cambiarClaveUsuario(clave, rut);
+			rpta = 1;
+		} catch (Exception e) {
+			rpta = 0;
+		}
+		return rpta;
+	}
 	
 }

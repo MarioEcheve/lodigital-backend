@@ -5,6 +5,7 @@ public class ReestablecerPasswordDTO {
 	private String rut;
 	private String correo;
 	private String claveProvisoria;
+	private String claveNueva;
 	private String clave;
 	private String token;
 	
@@ -37,5 +38,11 @@ public class ReestablecerPasswordDTO {
 	}
 	public void setToken(String token) {
 		this.token = token;
+	}
+	public String getClaveNueva() {
+		return claveNueva;
+	}
+	public void setClaveNueva(String claveNueva) {
+		this.claveNueva = claveNueva;
 	}
 }

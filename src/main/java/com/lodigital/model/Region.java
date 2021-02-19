@@ -25,15 +25,15 @@ public class Region implements Serializable{
     private String nombre;
 	
 	@OneToMany(mappedBy = "region")
-    private Set<Empresa> empresa = new HashSet<>();
+    private Set<Comuna> Comuna = new HashSet<>();
 	
 	@OneToMany(mappedBy = "region")
-    private Set<Comuna> Comuna = new HashSet<>();
+    private Set<Contrato> contrato = new HashSet<>();
 	
 	public Integer getId() {
 		return id;
 	}
-
+	
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -46,11 +46,5 @@ public class Region implements Serializable{
 		this.nombre = nombre;
 	}
 
-	public Set<Empresa> getEmpresa() {
-		return empresa;
-	}
-
-	public void setEmpresa(Set<Empresa> empresa) {
-		this.empresa = empresa;
-	}
+	
 }

@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 
+import com.lodigital.dto.EnviarCorreoActivarUsuarioDTO;
 import com.lodigital.dto.ReestablecerPasswordDTO;
 import com.lodigital.model.ResetToken;
 import com.lodigital.model.Usuario;
@@ -44,11 +45,11 @@ public class LoginController {
 	@Autowired
 	private IUsuarioService usuarioService;
 	
-	@PostMapping(value = "/enviarCorreoActivarUsuario", consumes = MediaType.TEXT_PLAIN_VALUE)
-	public ResponseEntity<Integer> enviarCorreoActivarUsuario(@RequestBody String rut) {
+	@PostMapping(value = "/enviarCorreoActivarUsuario", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
+	public ResponseEntity<Integer> enviarCorreoActivarUsuario(@RequestBody EnviarCorreoActivarUsuarioDTO enviarCorreoActivarUsuarioDTO) {
 		int rpta = 0;
 		try {
-			Usuario us = service.verificarNombreUsuarioByRut(rut);
+			Usuario us = service.verificarNombreUsuarioByRut(enviarCorreoActivarUsuarioDTO.getRut());
 			if (us != null && us.getIdUsuario() > 0) {
 				
 				ResetToken token = new ResetToken();
@@ -62,13 +63,13 @@ public class LoginController {
 				mail.setTo(us.getEmailPrincipal());
 				mail.setSubject("ACTIVAR USUARIO LO-DIGITAL");
 				Integer idUsuario = token.getUsuario().getIdUsuario();
-				Integer idEmpresa = 1;
+				Integer idEmpresa = enviarCorreoActivarUsuarioDTO.getIdEmpresa();
 				Map<String, Object> model = new HashMap<>();
 				String url = "http://localhost:4200/activar-usuario/" + token.getToken()+'/'+idEmpresa + '/' +idUsuario;
 				model.put("user", token.getUsuario().getUsername());
 				model.put("resetUrl", url);
 				mail.setModel(model);
-				emailUtil.enviarMailActivarUsuario(mail);
+				emailUtil.enviarMailActivarUsuario(mail, us);
 				rpta = 1;
 			}
 		} catch(Exception e) {
@@ -125,6 +126,7 @@ public class LoginController {
 			String claveProvisoriaIngresada = resReestablecerPasswordDTO.getClaveProvisoria();
 			String claveProvisoriaRegistrada = rt.getUsuario().getPasswordProvisorio();
 			Boolean resultadoValidacionClave  = bcrypt.matches(claveProvisoriaIngresada, claveProvisoriaRegistrada);
+			    
 			
 			if(resultadoValidacionClave) {
 				String claveHash = bcrypt.encode(resReestablecerPasswordDTO.getClave());

@@ -11,5 +11,6 @@ public interface IUsuarioEmpresaService extends ICRUD<UsuarioEmpresa> {
 	Integer guarda(Integer idEmpresa,Integer idUsuario, Integer idRol, Instant fechaCreacion, Integer idEstadoUsuario);
 	Integer update(Integer idEmpresa, Integer idUsuario, Instant fechaActivacion, Integer idEstadoUsuario);
 	List<UsuarioEmpresa> usuariosEmpresasByCompanyAndUser(Integer idEmpresa,Integer idUsuario);
+	Integer editar(Integer idEmpresa, Integer idUsuario, Integer idRol);
 	
 }

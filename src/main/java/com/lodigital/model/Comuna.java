@@ -29,6 +29,9 @@ public class Comuna implements Serializable{
 	@OneToMany(mappedBy = "comuna")
     private Set<Empresa> empresa = new HashSet<>();
 	
+	@OneToMany(mappedBy = "comuna")
+    private Set<Contrato> contrato = new HashSet<>();
+	
 	@ManyToOne
     @JsonIgnoreProperties(value = "comuna", allowSetters = true)
     private Region region;
