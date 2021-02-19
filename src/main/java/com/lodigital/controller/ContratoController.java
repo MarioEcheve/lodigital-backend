@@ -41,4 +41,11 @@ public class ContratoController {
 		Contrato cn = contratoService.findById(idContrato);
 		return new ResponseEntity<Contrato>(cn, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/contratoById/{idContrato}")
+	public ResponseEntity<Contrato> contratoById(@PathVariable Integer idContrato){
+		 Contrato contrato = contratoService.findById(idContrato);
+		return new ResponseEntity<Contrato>(contrato, HttpStatus.OK);
+	}
+	
 }
