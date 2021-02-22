@@ -1,10 +1,12 @@
 package com.lodigital.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.lodigital.model.Contrato;
 import com.lodigital.model.Libro;
 import com.lodigital.repo.ILibroRepo;
 import com.lodigital.service.ILibroService;
@@ -37,8 +39,8 @@ public class LibroServiceImpl implements ILibroService{
 
 	@Override
 	public Libro findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Libro> lib = libroRepo.findById(id);
+		return lib.isPresent() ? lib.get() : new Libro();
 	}
 
 	@Override

@@ -41,4 +41,10 @@ public class LibroController {
 		Libro lib = libroService.save(libro);
 		return new ResponseEntity<Libro>(lib, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/libroById/{idLibro}")
+	public ResponseEntity<Libro> libroById(@PathVariable("idLibro") Integer idLibro) {
+		Libro libro = libroService.findById(idLibro);
+		return new ResponseEntity<Libro>(libro, HttpStatus.OK);
+	}
 }
