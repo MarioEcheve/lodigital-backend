@@ -15,7 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class UsuarioLibro {
 	
 	@Id
-	private Empresa libro;
+	private Libro libro; 
+	
+	@Id
+	private UsuarioEmpresa usuarioEmpresa;
 	
 	@ManyToOne
     @JsonIgnoreProperties(value = "usuario_libro", allowSetters = true)
@@ -24,6 +27,9 @@ public class UsuarioLibro {
 	@ManyToOne
     @JsonIgnoreProperties(value = "usuario_libro", allowSetters = true)
     private EstadoUsuarioLibro estadoUsuarioLibro;
+
+	@Column(name="cargo")
+	private String cargo;
 	
 	@Column(name="nombre")
 	private String nombre;
@@ -34,14 +40,6 @@ public class UsuarioLibro {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-
-	public Empresa getLibro() {
-		return libro;
-	}
-
-	public void setLibro(Empresa libro) {
-		this.libro = libro;
 	}
 
 	public PerfilUsuarioLibro getPerfilUsuarioLibro() {
@@ -58,5 +56,29 @@ public class UsuarioLibro {
 
 	public void setEstadoUsuarioLibro(EstadoUsuarioLibro estadoUsuarioLibro) {
 		this.estadoUsuarioLibro = estadoUsuarioLibro;
+	}
+
+	public String getCargo() {
+		return cargo;
+	}
+
+	public void setCargo(String cargo) {
+		this.cargo = cargo;
+	}
+
+	public UsuarioEmpresa getUsuarioEmpresa() {
+		return usuarioEmpresa;
+	}
+
+	public void setUsuarioEmpresa(UsuarioEmpresa usuarioEmpresa) {
+		this.usuarioEmpresa = usuarioEmpresa;
+	}
+
+	public Libro getLibro() {
+		return libro;
+	}
+
+	public void setLibro(Libro libro) {
+		this.libro = libro;
 	}
 }	
