@@ -20,10 +20,6 @@ public class UsuarioEmpresaPK  implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_rol", nullable = false)
 	private Rol rol;
-	
-	@ManyToOne
-	@JoinColumn(name = "id_estado_usuario", nullable = false)
-	private EstadoUsuario estadoUsuario;
 
 	public Usuario getUsuario() {
 		return usuario;
