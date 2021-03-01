@@ -31,7 +31,6 @@ public class UsuarioLibroController {
 	@PostMapping(value = "/crearUsuarioLibro")
 	public ResponseEntity<Integer> crearUsuario(@Valid @RequestBody UsuarioLibroDTO usuarioLibroDTO){
 		Integer idEmpresa;
-		System.out.print(usuarioLibroDTO.getMandante());
 		if(usuarioLibroDTO.getMandante().equals(true)) {
 			idEmpresa = usuarioLibroDTO.getLibro().getContrato().getIdEmpresaMandante();
 		}else {
