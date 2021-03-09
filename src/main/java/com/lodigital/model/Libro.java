@@ -1,6 +1,8 @@
 package com.lodigital.model;
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +10,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -51,6 +54,9 @@ public class Libro {
 	@ManyToOne
     @JsonIgnoreProperties(value = "libro", allowSetters = true)
     private EstadoLibro estadoLibro;
+	
+	@OneToMany(mappedBy = "libro")
+    private Set<Folio> folios = new HashSet<>();
 
 	public Integer getIdLibro() {
 		return idLibro;

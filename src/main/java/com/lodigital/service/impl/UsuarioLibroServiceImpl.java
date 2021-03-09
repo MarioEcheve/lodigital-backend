@@ -64,4 +64,10 @@ public class UsuarioLibroServiceImpl implements IUsuarioLibroService{
 		// TODO Auto-generated method stub
 		return usuarioLibroRepo.actualizar(idEmpresa, idUsuario, idRol, idLibro, cargo, idPerfilUsuarioLibro, idEstadoUsuarioLibro);
 	}
+
+	@Override
+	public UsuarioLibro buscarUsuarioLibrosByLibroAndUsuario(Integer idLibro, Integer idUsuario) {
+		// TODO Auto-generated method stub
+		return usuarioLibroRepo.buscarUsuarioLibrosByLibroAndUsuario(idLibro,idUsuario);
+	}
 }

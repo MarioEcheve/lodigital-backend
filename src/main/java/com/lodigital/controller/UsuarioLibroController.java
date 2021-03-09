@@ -77,5 +77,9 @@ public class UsuarioLibroController {
 		 List<UsuarioLibro> lista = usuarioLibroService.buscarUsuarioLibrosByLibro(idLibro);
 		return new ResponseEntity<List<UsuarioLibro>>(lista, HttpStatus.OK);
 	}
-
-}
+	@GetMapping(value = "/buscarUsuarioLibrosByLibroAndUsuario/{idLibro}/{idUsuario}")
+	public ResponseEntity<UsuarioLibro> buscarUsuarioLibrosByLibroAndUsuario(@PathVariable("idLibro") Integer idLibro,@PathVariable("idUsuario") Integer idUsuario){
+		 UsuarioLibro lista = usuarioLibroService.buscarUsuarioLibrosByLibroAndUsuario(idLibro,idUsuario);
+		return new ResponseEntity<UsuarioLibro>(lista, HttpStatus.OK);
+	}
+} 
