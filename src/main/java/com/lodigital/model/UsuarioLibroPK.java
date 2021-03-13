@@ -25,7 +25,5 @@ public class UsuarioLibroPK implements Serializable{
 
 	public void setLibro(Libro libro) {
 		this.libro = libro;
-	}
-	
-	
+	}	
 }

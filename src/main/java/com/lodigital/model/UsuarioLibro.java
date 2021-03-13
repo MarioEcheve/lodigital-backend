@@ -81,4 +81,6 @@ public class UsuarioLibro {
 	public void setLibro(Libro libro) {
 		this.libro = libro;
 	}
+	
+	
 }	

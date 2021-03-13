@@ -24,7 +24,7 @@ public interface IUsuarioEmpresaRepo extends JpaRepository<UsuarioEmpresa, Integ
 	
 	@Transactional
 	@Modifying
-	@Query(value = "INSERT INTO usuario_empresa(id_empresa,id_usuario,id_rol,fecha_creacion,id_estado_usuario) VALUES (:idEmpresa, :idUsuario, :idRol, :fechaCreacion, :idEstadoUsuario )", nativeQuery = true)
+	@Query(value = "INSERT INTO usuario_empresa(id_empresa,id_usuario,id_rol,fecha_creacion,estado_usuario_id_estado_usuario) VALUES (:idEmpresa, :idUsuario, :idRol, :fechaCreacion, :idEstadoUsuario )", nativeQuery = true)
 	Integer registrar(@Param("idEmpresa") Integer idEmpresa, @Param("idUsuario") Integer idUsuario, 
 					  @Param("idRol") Integer idRol,@Param("fechaCreacion") Instant fechaCreacion, @Param("idEstadoUsuario") Integer idEstadoUsuario);
 	
@@ -33,7 +33,7 @@ public interface IUsuarioEmpresaRepo extends JpaRepository<UsuarioEmpresa, Integ
 	
 	@Transactional
 	@Modifying
-	@Query(value = "UPDATE usuario_empresa SET id_estado_usuario = :idEstadoUsuario, fecha_activacion= :fechaActivacion WHERE id_empresa= :idEmpresa and id_usuario= :idUsuario", nativeQuery = true)
+	@Query(value = "UPDATE usuario_empresa SET estado_usuario_id_estado_usuario = :idEstadoUsuario, fecha_activacion= :fechaActivacion WHERE id_empresa= :idEmpresa and id_usuario= :idUsuario", nativeQuery = true)
 	Integer actualizar(@Param("idEmpresa") Integer idEmpresa, @Param("idUsuario") Integer idUsuario,
 					   @Param("fechaActivacion") Instant fechaActivacion,@Param("idEstadoUsuario") Integer idEstadoUsuario );
 	

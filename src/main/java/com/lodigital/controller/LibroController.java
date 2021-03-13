@@ -47,4 +47,10 @@ public class LibroController {
 		Libro libro = libroService.findById(idLibro);
 		return new ResponseEntity<Libro>(libro, HttpStatus.OK);
 	}
+	
+	@GetMapping(value = "/libroByUsuarioLibro/{idUsuario}")
+	public ResponseEntity<List<Libro>> libroByUsuarioLibro(@PathVariable("idUsuario") Integer idUsuario) {
+		List<Libro> lista = libroService.libroByUsuarioLibro(idUsuario);
+		return new ResponseEntity<List<Libro>>(lista, HttpStatus.OK);
+	}
 }

@@ -55,4 +55,10 @@ public class LibroServiceImpl implements ILibroService{
 		return libroRepo.libroByContrato(idContrato);
 	}
 
+	@Override
+	public List<Libro> libroByUsuarioLibro(Integer idUsuario) {
+		// TODO Auto-generated method stub
+		return libroRepo.libroByUsuarioLibro(idUsuario);
+	}
+
 }

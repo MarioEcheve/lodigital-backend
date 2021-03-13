@@ -13,7 +13,7 @@ import com.lodigital.model.UsuarioLibro;
 
 public interface IUsuarioLibroRepo extends JpaRepository<UsuarioLibro, Integer>{
 
-	@Query("FROM UsuarioLibro ul WHERE ul.usuarioEmpresa.estadoUsuario.idEstadoUsuario = 1 and ul.libro.idLibro = :idLibro")
+	@Query("FROM UsuarioLibro ul WHERE ul.libro.idLibro = :idLibro")
 	List<UsuarioLibro> buscarUsuarioLibrosByLibro(@Param("idLibro") Integer idLibro);
 	
 	@Transactional
@@ -24,6 +24,7 @@ public interface IUsuarioLibroRepo extends JpaRepository<UsuarioLibro, Integer>{
 					  @Param("idRol") Integer idRol,@Param("idLibro") Integer idLibro, 
 					  @Param("cargo") String cargo, @Param("idPerfilUsuarioLibro") Integer idPerfilUsuarioLibro,
 					  @Param("idEstadoUsuarioLibro") Integer idEstadoUsuarioLibro);
+	
 	
 	@Transactional
 	@Modifying
@@ -42,5 +43,8 @@ public interface IUsuarioLibroRepo extends JpaRepository<UsuarioLibro, Integer>{
 	
 	@Query("FROM UsuarioLibro ul WHERE ul.usuarioEmpresa.usuario.idUsuario = :idUsuario and ul.libro.idLibro = :idLibro")
 	UsuarioLibro buscarUsuarioLibrosByLibroAndUsuario(@Param("idLibro") Integer idLibro, @Param("idUsuario") Integer idUsuario);
+	
+	@Query("FROM UsuarioLibro ul WHERE ul.usuarioEmpresa.usuario.idUsuario = :idUsuario")
+	List<UsuarioLibro> buscarUsuarioLibrosByUsuario(@Param("idUsuario") Integer idUsuario);
 	
 }

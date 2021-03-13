@@ -70,4 +70,10 @@ public class UsuarioLibroServiceImpl implements IUsuarioLibroService{
 		// TODO Auto-generated method stub
 		return usuarioLibroRepo.buscarUsuarioLibrosByLibroAndUsuario(idLibro,idUsuario);
 	}
+
+	@Override
+	public List<UsuarioLibro> buscarUsuarioLibrosByUsuario(Integer idUsuario) {
+		// TODO Auto-generated method stub
+		return usuarioLibroRepo.buscarUsuarioLibrosByUsuario(idUsuario);
+	}
 }

@@ -23,7 +23,8 @@ public class UsuarioEmpresa {
 	@Id
 	private Empresa empresa;
 	
-	@Id
+	@ManyToOne
+    @JsonIgnoreProperties(value = "usuario_empresa", allowSetters = true)
 	private Rol rol;
 
 	@ManyToOne
