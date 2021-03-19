@@ -93,15 +93,38 @@ public class Folio {
     
     @Column(name = "id_receptor")
     private Integer idReceptor;
+    
+    @Column(name = "usuario_receptor")
+    private String usuarioReceptor;
+    
+    @Column(name = "usuario_creador")
+    private String usuarioCreador;
 
-    @Column(name = "posee_folio_referencia")
+    public String getUsuarioReceptor() {
+		return usuarioReceptor;
+	}
+
+	public void setUsuarioReceptor(String usuarioReceptor) {
+		this.usuarioReceptor = usuarioReceptor;
+	}
+
+	public String getUsuarioCreador() {
+		return usuarioCreador;
+	}
+
+	public void setUsuarioCreador(String usuarioCreador) {
+		this.usuarioCreador = usuarioCreador;
+	}
+
+	@Column(name = "posee_folio_referencia")
     private Boolean poseeFolioReferencia;
 
     @Column(name = "posee_archivos")
     private Boolean poseeArchivos;
     
-    @Column(name="id_tipo_folio")
-    private Integer idTipoFolio;
+    @ManyToOne
+    @JsonIgnoreProperties(value = "folio", allowSetters = true)
+    private ConfiguracionTipoFolioTipoLibro configuracionTipoFolioTipoLibro;
     
     @ManyToOne
     @JsonIgnoreProperties(value = "folio", allowSetters = true)
@@ -323,11 +346,13 @@ public class Folio {
 		this.libro = libro;
 	}
 
-	public Integer getIdTipoFolio() {
-		return idTipoFolio;
+	public ConfiguracionTipoFolioTipoLibro getConfiguracionTipoFolioTipoLibro() {
+		return configuracionTipoFolioTipoLibro;
 	}
 
-	public void setIdTipoFolio(Integer idTipoFolio) {
-		this.idTipoFolio = idTipoFolio;
-	}	
+	public void setConfiguracionTipoFolioTipoLibro(ConfiguracionTipoFolioTipoLibro configuracionTipoFolioTipoLibro) {
+		this.configuracionTipoFolioTipoLibro = configuracionTipoFolioTipoLibro;
+	}
+	
+	
 }
