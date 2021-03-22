@@ -9,8 +9,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.User;
+
+import com.lodigital.dto.UsuarioDTO;
 import com.lodigital.model.Usuario;
 import com.lodigital.repo.IUsuarioRepo;
 import com.lodigital.service.IUsuarioService;
@@ -19,6 +22,10 @@ import com.lodigital.service.IUsuarioService;
 public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 	@Autowired
 	private IUsuarioRepo usuarioRepo;
+	
+	@Autowired
+	private BCryptPasswordEncoder bcrypt;
+	
 	
 	// se implementa de esta forma el loadbyusername ya que no se puede modificr el nombre
 	@Override
@@ -48,7 +55,6 @@ public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 	}
 	@Override
 	public Usuario update(Usuario obj) {
-		// TODO Auto-generated method stub
 		return usuarioRepo.save(obj);
 	}
 	@Override
@@ -81,6 +87,19 @@ public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 			rpta = 0;
 		}
 		return rpta;
+	}
+	@Override
+	public int updateUsuario(UsuarioDTO usuarioDto) {
+		int rpta = 0;
+		try {
+			 usuarioRepo.updateUsuario(usuarioDto.getEmailPrincipal(), usuarioDto.getEmailSecundario(), usuarioDto.getTelefonoPrincipal(), usuarioDto.getTelefonoSecundario(),usuarioDto.getProfesionOficio(), usuarioDto.getRut());
+			 rpta = 1;
+			 return rpta;
+		}catch (Exception e) {
+			rpta = 0;
+			return rpta;
+		}
+		
 	}
 	
 }

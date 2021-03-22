@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.lodigital.dto.ReestablecerPasswordDTO;
+import com.lodigital.dto.UsuarioDTO;
 import com.lodigital.model.Usuario;
 import com.lodigital.service.IUsuarioService;
 
@@ -73,6 +74,18 @@ public class UsuarioController {
 			return new ResponseEntity<Integer>(rpta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/updateUsuario")
+	public ResponseEntity<Integer> updateUsuario(@RequestBody UsuarioDTO usuarioDto ) {
+		int rpta = 0;
+		try {
+				rpta = usuarioService.updateUsuario(usuarioDto);
+				return new ResponseEntity<Integer>(rpta, HttpStatus.OK);
+			
+		}catch (Exception e) {
+			return new ResponseEntity<Integer>(rpta, HttpStatus.INTERNAL_SERVER_ERROR);
+		}
 	}
 	
 }

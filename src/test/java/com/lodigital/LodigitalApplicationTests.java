@@ -65,7 +65,7 @@ public class LodigitalApplicationTests {
 		assertTrue(true);
 	}
 	
-	
+	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
 		us.setIdUsuario(null);

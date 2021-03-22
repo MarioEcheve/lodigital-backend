@@ -22,4 +22,19 @@ public interface IUsuarioRepo extends JpaRepository<Usuario, Integer>{
 	@Modifying
 	@Query("UPDATE Usuario us SET us.password = :clave WHERE UPPER(us.rut) = UPPER(:rut) ")
 	void cambiarClaveUsuario(@Param("clave") String clave, @Param("rut") String rut) throws Exception;
+	
+	@Transactional
+	@Modifying
+	@Query("UPDATE Usuario us SET us.emailPrincipal = :emailPrincipal, "
+								+ "us.emailSecundario = :emailSecundario, "
+								+ "us.telefonoPrincipal = :telefonoPrincipal, "
+								+ "us.telefonoSecundario = :telefonoSecundario, "
+								+ "us.profesionOficio = :profesionOficio  "
+								+ "WHERE us.rut = :rut ")
+	void updateUsuario( @Param("emailPrincipal") String emailPrincipal, 
+						@Param("emailSecundario") String emailSecundario,
+						@Param("telefonoPrincipal") String telefonoPrincipal,
+						@Param("telefonoSecundario") String telefonoSecundario,
+						@Param("profesionOficio") String profesionOficio,
+						@Param("rut") String rut) throws Exception;
 }

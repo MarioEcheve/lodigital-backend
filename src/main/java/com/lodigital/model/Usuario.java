@@ -70,8 +70,6 @@ public class Usuario implements Serializable{
 	@Column(name = "estado", nullable = false)
 	private boolean enabled;
 	
-	
-
 	public Integer getIdUsuario() {
 		return idUsuario;
 	}
