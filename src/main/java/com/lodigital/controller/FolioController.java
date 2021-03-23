@@ -46,4 +46,12 @@ public class FolioController {
 		Folio lista = folioService.findById(idFolio);
 		return new ResponseEntity<Folio>(lista, HttpStatus.OK);
 	}
+	
+	@GetMapping(value="/eliminarFolioBorrador/{idFolio}")
+	private ResponseEntity<Boolean> eliminarFolioBorrador(@PathVariable("idFolio") Integer idFolio){
+		Boolean respuesta = folioService.delete(idFolio);
+		return new ResponseEntity<Boolean>(respuesta, HttpStatus.OK);
+	}
+	
+	
 }

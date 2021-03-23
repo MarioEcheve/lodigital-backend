@@ -43,7 +43,8 @@ public class FolioServiceImpl implements IFolioService{
 	@Override
 	public boolean delete(Integer id) {
 		// TODO Auto-generated method stub
-		return false;
+		folioRepo.deleteById(id);
+		return true;
 	}
 
 	@Override

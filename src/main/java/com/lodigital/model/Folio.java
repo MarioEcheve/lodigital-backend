@@ -70,7 +70,7 @@ public class Folio {
     @Column(name = "fecha_lectura")
     private Instant fechaLectura;
     
-    @Column(name = "asunto")
+    @Column(name = "asunto" , length = 300)
     private String asunto;
 
     @Size(max = 10485760)
