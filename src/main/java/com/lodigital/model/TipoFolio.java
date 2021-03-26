@@ -29,6 +29,10 @@ public class TipoFolio {
     @Column(name = "visible_contratista", nullable = false)
     private Boolean visibleContratista;
     
+    @NotNull
+    @Column(name = "apertura_libro", nullable = false)
+    private Boolean aperturaLibro;
+    
 	public Long getId() {
 		return id;
 	}
@@ -59,5 +63,13 @@ public class TipoFolio {
 
 	public void setVisibleContratista(Boolean visibleContratista) {
 		this.visibleContratista = visibleContratista;
+	}
+
+	public Boolean getAperturaLibro() {
+		return aperturaLibro;
+	}
+
+	public void setAperturaLibro(Boolean aperturaLibro) {
+		this.aperturaLibro = aperturaLibro;
 	}
 }

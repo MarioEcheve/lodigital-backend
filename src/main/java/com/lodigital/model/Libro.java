@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -57,6 +58,10 @@ public class Libro {
 	
 	@OneToMany(mappedBy = "libro")
     private Set<Folio> folios = new HashSet<>();
+	
+	@NotNull
+    @Column(name = "libro_abierto", nullable = true)
+    private Boolean libroAbierto;
 
 	public Integer getIdLibro() {
 		return idLibro;
@@ -136,5 +141,13 @@ public class Libro {
 
 	public void setTipoFirma(TipoFirma tipoFirma) {
 		this.tipoFirma = tipoFirma;
+	}
+
+	public Boolean getLibroAbierto() {
+		return libroAbierto;
+	}
+
+	public void setLibroAbierto(Boolean libroAbierto) {
+		this.libroAbierto = libroAbierto;
 	}
 }

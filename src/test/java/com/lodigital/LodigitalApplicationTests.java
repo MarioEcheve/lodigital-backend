@@ -43,7 +43,6 @@ public class LodigitalApplicationTests {
 	private IRegionRepo regionRepo;
 	
 	
-	@Test
 	public void crearEstadoUsuario() {
 		EstadoUsuario estadoActivo = new EstadoUsuario();
 		estadoActivo.setIdEstadoUsuario(1);
@@ -69,23 +68,22 @@ public class LodigitalApplicationTests {
 	public void crearUsuario() {
 		Usuario us = new Usuario();
 		us.setIdUsuario(null);
-		us.setUsername("fvilchessoleman@gmail.com");
+		us.setUsername("fernando@gmail.com");
 		us.setPassword(bcrypt.encode("12345"));
 		us.setEnabled(true);
 		us.setApellidoPaterno("Vilches");
 		us.setApellidoMaterno("Soleman");
-		us.setEmailPrincipal("fvilchessoleman@gmail.com");
+		us.setEmailPrincipal("marioandres@gmail.com");
 		us.setEmailSecundario(null);
-		us.setProfesionOficio("ingeniero en construcción");
-		us.setNombre("Fernando Alejandro");
+		us.setProfesionOficio("ingeniero en construccion");
+		us.setNombre("Fernando ");
 		us.setTelefonoPrincipal("944086220");		
-		us.setRut("13224233-k");
+		us.setRut("14742353-5");
 		Usuario retorno = usuarioRepo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));
 	}
 	
-	@Test
 	public void crearEmpresa() {
 		
 		Empresa empresa = new Empresa();
@@ -103,7 +101,7 @@ public class LodigitalApplicationTests {
 		empresa.setNombreContactoTecnico("Marcelo");
 		empresa.setNombreFantasia("Empresa de Prueba 2 ");
 		empresa.setRazonSocial("Empresa de Prueba 2 ");
-		empresa.setRut("10.132.316-1");
+		empresa.setRut("10132316-1");
 		empresa.setTelefonoPrincipalContactoComercial("944086225");
 		empresa.setTelefonoPrincipalContactoTecnico("944086229");
 		empresa.setTelefonoSecundarioContactoComercial("944086228");
@@ -114,7 +112,6 @@ public class LodigitalApplicationTests {
 		assertTrue(true);
 	}
 	
-	@Test
 	public void crearRol() {
 		
 		Rol rolSuperUsuario = new Rol();
@@ -132,7 +129,6 @@ public class LodigitalApplicationTests {
 		assertTrue(true);
 	}
 
-	@Test
 	public void crearRegion() {
 		
 		Region region = new Region();

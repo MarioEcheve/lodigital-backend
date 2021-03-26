@@ -87,4 +87,10 @@ public class UsuarioLibroController {
 		 List<UsuarioLibro> lista = usuarioLibroService.buscarUsuarioLibrosByUsuario(idUsuario,idContrato);
 		return new ResponseEntity<List<UsuarioLibro>>(lista, HttpStatus.OK);
 	}
+	@GetMapping(value = "/buscarMisLibros/{idUsuario}")
+	public ResponseEntity<List<UsuarioLibro>> buscarMisLibros(@PathVariable("idUsuario") Integer idUsuario){
+		 List<UsuarioLibro> lista = usuarioLibroService.buscarMisLibros(idUsuario);
+		return new ResponseEntity<List<UsuarioLibro>>(lista, HttpStatus.OK);
+	}
+	
 } 
