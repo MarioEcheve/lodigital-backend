@@ -87,5 +87,9 @@ public class UsuarioController {
 			return new ResponseEntity<Integer>(rpta, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
-	
+	@GetMapping(value = "/findById/{id}")
+	public ResponseEntity<Usuario> findById(@PathVariable("id") Integer id) {
+		Usuario usuario = usuarioService.findById(id);
+		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
+	}
 }

@@ -2,6 +2,7 @@ package com.lodigital.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.security.core.userdetails.User;
 
 import com.lodigital.dto.UsuarioDTO;
+import com.lodigital.model.Contrato;
 import com.lodigital.model.Usuario;
 import com.lodigital.repo.IUsuarioRepo;
 import com.lodigital.service.IUsuarioService;
@@ -64,8 +66,8 @@ public class UsuarioServiceImpl implements UserDetailsService,IUsuarioService{
 	}
 	@Override
 	public Usuario findById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		Optional<Usuario> cn = usuarioRepo.findById(id);
+		return cn.isPresent() ? cn.get() : new Usuario();
 	}
 	@Override
 	public boolean delete(Integer id) {
