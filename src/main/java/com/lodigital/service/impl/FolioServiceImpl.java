@@ -1,6 +1,7 @@
 package com.lodigital.service.impl;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,4 +54,9 @@ public class FolioServiceImpl implements IFolioService{
 		return folioRepo.folioByLibro(idLibro);
 	}
 
+	@Override
+	public List<Map<String, String>> correlativoFolio(Integer idLibro) {
+		// TODO Auto-generated method stub
+		return folioRepo.correlativoFolio(idLibro);
+	}
 }

@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import com.lodigital.model.Folio;
 import com.lodigital.service.IFolioService;
@@ -53,5 +55,9 @@ public class FolioController {
 		return new ResponseEntity<Boolean>(respuesta, HttpStatus.OK);
 	}
 	
-	
+    @GetMapping("/correlativoFolio/{idLibro}")
+    public String correlativoFolio(@PathVariable Integer idLibro) throws JsonProcessingException{
+        String json = new ObjectMapper().writeValueAsString(folioService.correlativoFolio(idLibro));
+        return json;
+    }
 }
