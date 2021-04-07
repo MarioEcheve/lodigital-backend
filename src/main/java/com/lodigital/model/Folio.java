@@ -129,6 +129,10 @@ public class Folio {
     @ManyToOne
     @JsonIgnoreProperties(value = "folio", allowSetters = true)
     private Libro libro;
+    
+    @Column(name="codigo_verificacion")
+    private String codigoVerificacion;
+    
 
 	public Integer getIdFolio() {
 		return idFolio;
@@ -353,6 +357,12 @@ public class Folio {
 	public void setConfiguracionTipoFolioTipoLibro(ConfiguracionTipoFolioTipoLibro configuracionTipoFolioTipoLibro) {
 		this.configuracionTipoFolioTipoLibro = configuracionTipoFolioTipoLibro;
 	}
-	
-	
+
+	public String getCodigoVerificacion() {
+		return codigoVerificacion;
+	}
+
+	public void setCodigoVerificacion(String codigoVerificacion) {
+		this.codigoVerificacion = codigoVerificacion;
+	}	
 }
