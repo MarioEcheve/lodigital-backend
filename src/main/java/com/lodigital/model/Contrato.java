@@ -130,6 +130,14 @@ public class Contrato  implements Serializable{
 	@Column(name="contratista_crear_libro")
 	private Boolean contratistaCrearLibro;
 	
+	@Column(name="nombre_empresa_mandante")
+	private String nombreEmpresaMandante;
+	
+	@Column(name="nombre_empresa_contratista")
+	private String nombreEmpresaContratista;
+	
+	@Column(name="resolucion_contrato")
+	private String resolucionContrato;
 	
 	public Integer getId() {
 		return id;
@@ -393,5 +401,29 @@ public class Contrato  implements Serializable{
 
 	public void setTipoValorContrato(TipoValorContrato tipoValorContrato) {
 		this.tipoValorContrato = tipoValorContrato;
+	}
+
+	public String getNombreEmpresaMandante() {
+		return nombreEmpresaMandante;
+	}
+
+	public void setNombreEmpresaMandante(String nombreEmpresaMandante) {
+		this.nombreEmpresaMandante = nombreEmpresaMandante;
+	}
+
+	public String getNombreEmpresaContratista() {
+		return nombreEmpresaContratista;
+	}
+
+	public void setNombreEmpresaContratista(String nombreEmpresaContratista) {
+		this.nombreEmpresaContratista = nombreEmpresaContratista;
+	}
+
+	public String getResolucionContrato() {
+		return resolucionContrato;
+	}
+
+	public void setResolucionContrato(String resolucionContrato) {
+		this.resolucionContrato = resolucionContrato;
 	}
 }

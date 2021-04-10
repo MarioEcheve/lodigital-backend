@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name = "usuario_empresa")
 @IdClass(UsuarioEmpresaPK.class)
@@ -21,14 +23,16 @@ public class UsuarioEmpresa {
 	@Id
 	private Empresa empresa;
 	
-	@Id
+	@ManyToOne
+    @JsonIgnoreProperties(value = "usuario_empresa", allowSetters = true)
 	private Rol rol;
-	
-	@Id
-	private EstadoUsuario estadoUsuario;
+
+	@ManyToOne
+    @JsonIgnoreProperties(value = "usuario_empresa", allowSetters = true)
+    private EstadoUsuario estadoUsuario;
 	
 	@Column(name = "fecha_creacion")
-	private Instant fechaCreacion;
+	private Instant fechaCreacion; 
 	
 	@Column(name = "fecha_activacion")
 	private Instant fechaActivacion;

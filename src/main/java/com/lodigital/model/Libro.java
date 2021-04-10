@@ -1,6 +1,8 @@
 package com.lodigital.model;
 
 import java.time.Instant;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -51,6 +55,13 @@ public class Libro {
 	@ManyToOne
     @JsonIgnoreProperties(value = "libro", allowSetters = true)
     private EstadoLibro estadoLibro;
+	
+	@OneToMany(mappedBy = "libro")
+    private Set<Folio> folios = new HashSet<>();
+	
+	@NotNull
+    @Column(name = "libro_abierto", nullable = true)
+    private Boolean libroAbierto;
 
 	public Integer getIdLibro() {
 		return idLibro;
@@ -130,5 +141,13 @@ public class Libro {
 
 	public void setTipoFirma(TipoFirma tipoFirma) {
 		this.tipoFirma = tipoFirma;
+	}
+
+	public Boolean getLibroAbierto() {
+		return libroAbierto;
+	}
+
+	public void setLibroAbierto(Boolean libroAbierto) {
+		this.libroAbierto = libroAbierto;
 	}
 }

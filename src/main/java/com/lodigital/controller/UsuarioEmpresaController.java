@@ -74,6 +74,7 @@ public class UsuarioEmpresaController {
 		tokenService.eliminar(rt);
 		return new ResponseEntity<Integer>(usr, HttpStatus.OK);
 	}
+	
 	@PutMapping(value = "/actualizarUsuarioEmpresaEditarUsuario")
 	public ResponseEntity<Integer> actualizarUsuarioEmpresaEditarUsuario(@Valid @RequestBody UsuarioEmpresa usuarioEmpresa){
 		Integer usr = service.editar(usuarioEmpresa.getEmpresa().getIdEmpresa(), usuarioEmpresa.getUsuario().getIdUsuario(), usuarioEmpresa.getRol().getIdRol());
