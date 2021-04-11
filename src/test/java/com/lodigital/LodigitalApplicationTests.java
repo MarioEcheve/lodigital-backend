@@ -42,7 +42,7 @@ public class LodigitalApplicationTests {
 	@Autowired
 	private IRegionRepo regionRepo;
 	
-	
+	@Test
 	public void crearEstadoUsuario() {
 		EstadoUsuario estadoActivo = new EstadoUsuario();
 		estadoActivo.setIdEstadoUsuario(1);
@@ -63,7 +63,7 @@ public class LodigitalApplicationTests {
 		
 		assertTrue(true);
 	}
-	
+	/*
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
@@ -82,8 +82,8 @@ public class LodigitalApplicationTests {
 		Usuario retorno = usuarioRepo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));
-	}
-	
+	}*/
+	@Test
 	public void crearEmpresa() {
 		
 		Empresa empresa = new Empresa();
@@ -111,7 +111,7 @@ public class LodigitalApplicationTests {
 		
 		assertTrue(true);
 	}
-	
+	@Test
 	public void crearRol() {
 		
 		Rol rolSuperUsuario = new Rol();
@@ -128,7 +128,7 @@ public class LodigitalApplicationTests {
 		
 		assertTrue(true);
 	}
-
+	@Test
 	public void crearRegion() {
 		
 		Region region = new Region();
