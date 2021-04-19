@@ -27,4 +27,47 @@ public class FolioReferencia implements Serializable{
 
     @Column(name = "id_folio_referencia")
     private Integer idFolioReferencia;
+    
+    @Column(name = "id_libro_folio_origen")
+    private Integer idLibroFolioOrigen;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getAsunto() {
+		return asunto;
+	}
+
+	public void setAsunto(String asunto) {
+		this.asunto = asunto;
+	}
+
+	public Integer getIdFolioOrigen() {
+		return idFolioOrigen;
+	}
+
+	public void setIdFolioOrigen(Integer idFolioOrigen) {
+		this.idFolioOrigen = idFolioOrigen;
+	}
+
+	public Integer getIdFolioReferencia() {
+		return idFolioReferencia;
+	}
+
+	public void setIdFolioReferencia(Integer idFolioReferencia) {
+		this.idFolioReferencia = idFolioReferencia;
+	}
+
+	public Integer getIdLibroFolioOrigen() {
+		return idLibroFolioOrigen;
+	}
+
+	public void setIdLibroFolioOrigen(Integer idLibroFolioOrigen) {
+		this.idLibroFolioOrigen = idLibroFolioOrigen;
+	}
 }
