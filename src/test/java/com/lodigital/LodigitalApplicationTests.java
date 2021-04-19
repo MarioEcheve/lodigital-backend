@@ -83,6 +83,7 @@ public class LodigitalApplicationTests {
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));
 	}*/
+	/*
 	@Test
 	public void crearEmpresa() {
 		
@@ -137,5 +138,5 @@ public class LodigitalApplicationTests {
 		
 		regionRepo.save(region);
 	}
-	
+	*/
 }
