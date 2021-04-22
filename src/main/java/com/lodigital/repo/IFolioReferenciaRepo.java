@@ -12,6 +12,6 @@ import com.lodigital.model.FolioReferencia;
 public interface IFolioReferenciaRepo extends JpaRepository<FolioReferencia, Integer>{
 	
 	@Transactional
-	@Query(value="select * from folio_referencia where id_folio_origen = :idFolio ", nativeQuery = true)
+	@Query(value="select * from folio_referencia where id_folio_origen = :idFolio", nativeQuery = true)
 	List<FolioReferencia> buscaFolioReferenciaByFolioOrigen(@Param("idFolio") Integer idFolio);
 }
