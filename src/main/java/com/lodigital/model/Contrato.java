@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,7 +21,7 @@ public class Contrato  implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
 	
 	@Column(name="id_empresa_mandante")
@@ -138,6 +139,10 @@ public class Contrato  implements Serializable{
 	
 	@Column(name="resolucion_contrato")
 	private String resolucionContrato;
+	
+	@Size(max = 200)
+	@Column(name = "nombre_carpeta_aws", length = 200)
+	private String nombreCarpetaAws;
 	
 	public Integer getId() {
 		return id;
@@ -425,5 +430,13 @@ public class Contrato  implements Serializable{
 
 	public void setResolucionContrato(String resolucionContrato) {
 		this.resolucionContrato = resolucionContrato;
+	}
+
+	public String getNombreCarpetaAws() {
+		return nombreCarpetaAws;
+	}
+
+	public void setNombreCarpetaAws(String nombreCarpetaAws) {
+		this.nombreCarpetaAws = nombreCarpetaAws;
 	}
 }

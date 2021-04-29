@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -21,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 public class Libro {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idLibro;
 	
 	@Column(name="codigo" , nullable = false , length = 10)
@@ -62,6 +63,10 @@ public class Libro {
 	@NotNull
     @Column(name = "libro_abierto", nullable = true)
     private Boolean libroAbierto;
+	
+	@Size(max = 200)
+	@Column(name = "nombre_carpeta_aws", length = 200)
+	private String nombreCarpetaAws;
 
 	public Integer getIdLibro() {
 		return idLibro;
@@ -149,5 +154,13 @@ public class Libro {
 
 	public void setLibroAbierto(Boolean libroAbierto) {
 		this.libroAbierto = libroAbierto;
+	}
+
+	public String getNombreCarpetaAws() {
+		return nombreCarpetaAws;
+	}
+
+	public void setNombreCarpetaAws(String nombreCarpetaAws) {
+		this.nombreCarpetaAws = nombreCarpetaAws;
 	}
 }

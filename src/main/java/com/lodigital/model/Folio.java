@@ -99,6 +99,10 @@ public class Folio {
     
     @Column(name = "usuario_creador")
     private String usuarioCreador;
+    
+    @Size(max = 200)
+	@Column(name = "nombre_carpeta_aws", length = 200)
+	private String nombreCarpetaAws;
 
     public String getUsuarioReceptor() {
 		return usuarioReceptor;
@@ -364,5 +368,13 @@ public class Folio {
 
 	public void setCodigoVerificacion(String codigoVerificacion) {
 		this.codigoVerificacion = codigoVerificacion;
+	}
+
+	public String getNombreCarpetaAws() {
+		return nombreCarpetaAws;
+	}
+
+	public void setNombreCarpetaAws(String nombreCarpetaAws) {
+		this.nombreCarpetaAws = nombreCarpetaAws;
 	}	
 }

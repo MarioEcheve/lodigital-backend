@@ -15,7 +15,7 @@ public class Empresa implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer idEmpresa;
 
 	@NotNull
@@ -94,6 +94,10 @@ public class Empresa implements Serializable {
 	@ManyToOne
     @JsonIgnoreProperties(value = "empresa", allowSetters = true)
     private Comuna comuna;
+	
+	@Size(max = 200)
+	@Column(name = "nombre_carpeta_aws", length = 200)
+	private String nombreCarpetaAws;
 	
 	public Integer getIdEmpresa() {
 		return idEmpresa;
@@ -253,5 +257,13 @@ public class Empresa implements Serializable {
 
 	public void setComuna(Comuna comuna) {
 		this.comuna = comuna;
+	}
+
+	public String getNombreCarpetaAws() {
+		return nombreCarpetaAws;
+	}
+
+	public void setNombreCarpetaAws(String nombreCarpetaAws) {
+		this.nombreCarpetaAws = nombreCarpetaAws;
 	}
 }
