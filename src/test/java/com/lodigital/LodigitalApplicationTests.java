@@ -41,7 +41,7 @@ public class LodigitalApplicationTests {
 	
 	@Autowired
 	private IRegionRepo regionRepo;
-	
+	/*
 	@Test
 	public void crearEstadoUsuario() {
 		EstadoUsuario estadoActivo = new EstadoUsuario();
@@ -63,27 +63,28 @@ public class LodigitalApplicationTests {
 		
 		assertTrue(true);
 	}
+	*/
 	/*
 	@Test
 	public void crearUsuario() {
 		Usuario us = new Usuario();
 		us.setIdUsuario(null);
-		us.setUsername("fernando@gmail.com");
+		us.setUsername("fvilches@gmail.com");
 		us.setPassword(bcrypt.encode("12345"));
 		us.setEnabled(true);
-		us.setApellidoPaterno("Vilches");
-		us.setApellidoMaterno("Soleman");
-		us.setEmailPrincipal("marioandres@gmail.com");
+		us.setApellidoPaterno("vilches");
+		us.setApellidoMaterno("soleman");
+		us.setEmailPrincipal("fvilches@gmail.com");
 		us.setEmailSecundario(null);
 		us.setProfesionOficio("ingeniero en construccion");
-		us.setNombre("Fernando ");
+		us.setNombre("Fernando vilches ");
 		us.setTelefonoPrincipal("944086220");		
-		us.setRut("14742353-5");
+		us.setRut("13224233-K");
 		Usuario retorno = usuarioRepo.save(us);
 		
 		assertTrue(retorno.getPassword().equalsIgnoreCase(us.getPassword()));
-	}*/
-	/*
+	}
+	*/
 	@Test
 	public void crearEmpresa() {
 		
@@ -91,7 +92,7 @@ public class LodigitalApplicationTests {
 		empresa.setIdEmpresa(2);
 		empresa.setCargoFuncionContactoComercial(" funcion contacto comercial");
 		empresa.setCargoFuncionContactoTecnico("funcion contacto tecnico");
-		empresa.setDireccion(" sin direccion ");
+		empresa.setDireccion("sin direccion ");
 		empresa.setEmailContactoComercial("prueba@gmail.com");
 		empresa.setEmailContactoTecnico("pruebaTecnico@gmail.com");
 		empresa.setFechaCreacion(null);
@@ -100,9 +101,9 @@ public class LodigitalApplicationTests {
 		empresa.setIdEmpresa(null);
 		empresa.setNombreContactoComercial("Felipe");
 		empresa.setNombreContactoTecnico("Marcelo");
-		empresa.setNombreFantasia("Empresa de Prueba 2 ");
-		empresa.setRazonSocial("Empresa de Prueba 2 ");
-		empresa.setRut("10132316-1");
+		empresa.setNombreFantasia("Empresa de Prueba 1 ");
+		empresa.setRazonSocial("CONSTRUCTORA RCR SPA");
+		empresa.setRut("76655075-4");
 		empresa.setTelefonoPrincipalContactoComercial("944086225");
 		empresa.setTelefonoPrincipalContactoTecnico("944086229");
 		empresa.setTelefonoSecundarioContactoComercial("944086228");
@@ -112,6 +113,7 @@ public class LodigitalApplicationTests {
 		
 		assertTrue(true);
 	}
+	/*
 	@Test
 	public void crearRol() {
 		
