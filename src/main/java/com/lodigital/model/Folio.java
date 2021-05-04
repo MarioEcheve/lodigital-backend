@@ -107,6 +107,10 @@ public class Folio {
     @Size(max = 200)
 	@Column(name = "url_aws", length = 200)
 	private String urlAws;
+    
+    @Size(max = 200)
+  	@Column(name = "key_archivo_aws", length = 200)
+  	private String keyArchivoAws;
 
     public String getUsuarioReceptor() {
 		return usuarioReceptor;
@@ -388,5 +392,13 @@ public class Folio {
 
 	public void setUrlAws(String urlAws) {
 		this.urlAws = urlAws;
-	}	
+	}
+
+	public String getKeyArchivoAws() {
+		return keyArchivoAws;
+	}
+
+	public void setKeyArchivoAws(String keyArchivoAws) {
+		this.keyArchivoAws = keyArchivoAws;
+	}
 }
