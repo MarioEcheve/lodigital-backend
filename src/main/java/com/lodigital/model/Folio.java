@@ -103,6 +103,10 @@ public class Folio {
     @Size(max = 200)
 	@Column(name = "nombre_carpeta_aws", length = 200)
 	private String nombreCarpetaAws;
+    
+    @Size(max = 200)
+	@Column(name = "url_aws", length = 200)
+	private String urlAws;
 
     public String getUsuarioReceptor() {
 		return usuarioReceptor;
@@ -376,5 +380,13 @@ public class Folio {
 
 	public void setNombreCarpetaAws(String nombreCarpetaAws) {
 		this.nombreCarpetaAws = nombreCarpetaAws;
+	}
+
+	public String getUrlAws() {
+		return urlAws;
+	}
+
+	public void setUrlAws(String urlAws) {
+		this.urlAws = urlAws;
 	}	
 }
