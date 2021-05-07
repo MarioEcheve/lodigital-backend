@@ -55,6 +55,8 @@ public class Folio {
     @Column(name = "idlibro_relacionado")
     private Integer idlibroRelacionado;
 
+    
+    
     @Column(name = "id_folio_relacionado")
     private Integer idFolioRelacionado;
 
