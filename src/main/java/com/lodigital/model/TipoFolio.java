@@ -33,6 +33,10 @@ public class TipoFolio {
     @Column(name = "apertura_libro", nullable = false)
     private Boolean aperturaLibro;
     
+    @Column(name = "cierre_libro", nullable = false)
+    private Boolean cierreLibro;
+    
+    
 	public Long getId() {
 		return id;
 	}
@@ -71,5 +75,13 @@ public class TipoFolio {
 
 	public void setAperturaLibro(Boolean aperturaLibro) {
 		this.aperturaLibro = aperturaLibro;
+	}
+
+	public Boolean getCierreLibro() {
+		return cierreLibro;
+	}
+
+	public void setCierreLibro(Boolean cierreLibro) {
+		this.cierreLibro = cierreLibro;
 	}
 }

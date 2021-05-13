@@ -55,8 +55,6 @@ public class Folio {
     @Column(name = "idlibro_relacionado")
     private Integer idlibroRelacionado;
 
-    
-    
     @Column(name = "id_folio_relacionado")
     private Integer idFolioRelacionado;
 
@@ -111,9 +109,17 @@ public class Folio {
 	private String urlAws;
     
     @Size(max = 200)
+	@Column(name = "url_aws_lectura", length = 200)
+	private String urlAwsLectura;
+    
+    @Size(max = 200)
+  	@Column(name = "key_archivo_aws_lectura", length = 200)
+  	private String keyArchivoAwsLectura;
+    
+    @Size(max = 200)
   	@Column(name = "key_archivo_aws", length = 200)
   	private String keyArchivoAws;
-
+    
     public String getUsuarioReceptor() {
 		return usuarioReceptor;
 	}
@@ -402,5 +408,21 @@ public class Folio {
 
 	public void setKeyArchivoAws(String keyArchivoAws) {
 		this.keyArchivoAws = keyArchivoAws;
+	}
+
+	public String getUrlAwsLectura() {
+		return urlAwsLectura;
+	}
+
+	public void setUrlAwsLectura(String urlAwsLectura) {
+		this.urlAwsLectura = urlAwsLectura;
+	}
+
+	public String getKeyArchivoAwsLectura() {
+		return keyArchivoAwsLectura;
+	}
+
+	public void setKeyArchivoAwsLectura(String keyArchivoAwsLectura) {
+		this.keyArchivoAwsLectura = keyArchivoAwsLectura;
 	}
 }
