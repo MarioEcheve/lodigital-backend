@@ -52,11 +52,6 @@ public class Folio {
     @Column(name = "fecha_creacion")
     private Instant fechaCreacion;
 
-    @Column(name = "idlibro_relacionado")
-    private Integer idlibroRelacionado;
-
-    @Column(name = "id_folio_relacionado")
-    private Integer idFolioRelacionado;
 
     @Column(name = "id_folio_respuesta")
     private Integer idFolioRespuesta;
@@ -76,20 +71,6 @@ public class Folio {
     @Size(max = 10485760)
     @Column(name = "anotacion", length = 10485760)
     private String anotacion;
-    
-    @Lob
-    @Column(name = "pdf_firmado")
-    private byte[] pdfFirmado;
-
-    @Column(name = "pdf_firmado_content_type")
-    private String pdfFirmadoContentType;
-
-    @Lob
-    @Column(name = "pdf_lectura")
-    private byte[] pdfLectura;
-
-    @Column(name = "pdf_lectura_content_type")
-    private String pdfLecturaContentType;
     
     @Column(name = "id_receptor")
     private Integer idReceptor;
@@ -152,6 +133,9 @@ public class Folio {
     
     @Column(name="codigo_verificacion")
     private String codigoVerificacion;
+    
+    @Column(name="codigo_verificacion_lectura")
+    private String codigoVerificacionLectura;
     
 
 	public Integer getIdFolio() {
@@ -242,22 +226,6 @@ public class Folio {
 		this.fechaCreacion = fechaCreacion;
 	}
 
-	public Integer getIdlibroRelacionado() {
-		return idlibroRelacionado;
-	}
-
-	public void setIdlibroRelacionado(Integer idlibroRelacionado) {
-		this.idlibroRelacionado = idlibroRelacionado;
-	}
-
-	public Integer getIdFolioRelacionado() {
-		return idFolioRelacionado;
-	}
-
-	public void setIdFolioRelacionado(Integer idFolioRelacionado) {
-		this.idFolioRelacionado = idFolioRelacionado;
-	}
-
 	public Integer getIdFolioRespuesta() {
 		return idFolioRespuesta;
 	}
@@ -304,38 +272,6 @@ public class Folio {
 
 	public void setAnotacion(String anotacion) {
 		this.anotacion = anotacion;
-	}
-
-	public byte[] getPdfFirmado() {
-		return pdfFirmado;
-	}
-
-	public void setPdfFirmado(byte[] pdfFirmado) {
-		this.pdfFirmado = pdfFirmado;
-	}
-
-	public String getPdfFirmadoContentType() {
-		return pdfFirmadoContentType;
-	}
-
-	public void setPdfFirmadoContentType(String pdfFirmadoContentType) {
-		this.pdfFirmadoContentType = pdfFirmadoContentType;
-	}
-
-	public byte[] getPdfLectura() {
-		return pdfLectura;
-	}
-
-	public void setPdfLectura(byte[] pdfLectura) {
-		this.pdfLectura = pdfLectura;
-	}
-
-	public String getPdfLecturaContentType() {
-		return pdfLecturaContentType;
-	}
-
-	public void setPdfLecturaContentType(String pdfLecturaContentType) {
-		this.pdfLecturaContentType = pdfLecturaContentType;
 	}
 
 	public Integer getIdReceptor() {
