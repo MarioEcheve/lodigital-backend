@@ -12,7 +12,7 @@ import com.lodigital.model.Folio;
 
 public interface IFolioRepo extends JpaRepository<Folio, Integer>{
 	@Transactional
-	@Query(value="select * from Folio f where f.libro_id_libro = :idLibro", nativeQuery = true)
+	@Query(value="select * from Folio f where f.libro_id_libro = :idLibro order by 1 desc", nativeQuery = true)
 	List<Folio> folioByLibro(@Param("idLibro") Integer idLibro);
 	
 	@Query( value = "select count(libro_id_libro) + 1 as correlativo from folio where id_usuario_firma  notnull and libro_id_libro = :idLibro" ,nativeQuery = true)

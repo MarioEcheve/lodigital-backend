@@ -78,8 +78,8 @@ public class UsuarioLibroServiceImpl implements IUsuarioLibroService{
 	}
 
 	@Override
-	public List<UsuarioLibro> buscarMisLibros(Integer idUsuario) {
+	public List<UsuarioLibro> buscarMisLibros(Integer idUsuario,Integer idEmpresa) {
 		// TODO Auto-generated method stub
-		return usuarioLibroRepo.buscarMisLibros(idUsuario);
+		return usuarioLibroRepo.buscarMisLibros(idUsuario,idEmpresa);
 	}
 }

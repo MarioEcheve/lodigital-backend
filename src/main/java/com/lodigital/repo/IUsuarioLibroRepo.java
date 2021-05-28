@@ -47,8 +47,8 @@ public interface IUsuarioLibroRepo extends JpaRepository<UsuarioLibro, Integer>{
 	@Query("FROM UsuarioLibro ul WHERE ul.usuarioEmpresa.usuario.idUsuario = :idUsuario and ul.libro.contrato.id = :idContrato")
 	List<UsuarioLibro> buscarUsuarioLibrosByUsuario(@Param("idUsuario") Integer idUsuario, @Param("idContrato") Integer idContrato);
 	
-	@Query("FROM UsuarioLibro ul WHERE ul.usuarioEmpresa.usuario.idUsuario = :idUsuario and ul.libro.libroAbierto = true and ul.estadoUsuarioLibro = 1")
-	List<UsuarioLibro> buscarMisLibros(@Param("idUsuario") Integer idUsuario);
+	@Query("FROM UsuarioLibro ul WHERE ul.usuarioEmpresa.usuario.idUsuario = :idUsuario and ul.usuarioEmpresa.empresa.idEmpresa= :idEmpresa  and ul.estadoUsuarioLibro = 1")
+	List<UsuarioLibro> buscarMisLibros(@Param("idUsuario") Integer idUsuario,@Param("idEmpresa") Integer idEmpresa);
 	
 	
 }

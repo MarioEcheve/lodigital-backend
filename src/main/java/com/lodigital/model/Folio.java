@@ -101,21 +101,6 @@ public class Folio {
   	@Column(name = "key_archivo_aws", length = 200)
   	private String keyArchivoAws;
     
-    public String getUsuarioReceptor() {
-		return usuarioReceptor;
-	}
-
-	public void setUsuarioReceptor(String usuarioReceptor) {
-		this.usuarioReceptor = usuarioReceptor;
-	}
-
-	public String getUsuarioCreador() {
-		return usuarioCreador;
-	}
-
-	public void setUsuarioCreador(String usuarioCreador) {
-		this.usuarioCreador = usuarioCreador;
-	}
 
 	@Column(name = "posee_folio_referencia")
     private Boolean poseeFolioReferencia;
@@ -360,5 +345,20 @@ public class Folio {
 
 	public void setKeyArchivoAwsLectura(String keyArchivoAwsLectura) {
 		this.keyArchivoAwsLectura = keyArchivoAwsLectura;
+	}
+    public String getUsuarioReceptor() {
+		return usuarioReceptor;
+	}
+
+	public void setUsuarioReceptor(String usuarioReceptor) {
+		this.usuarioReceptor = usuarioReceptor;
+	}
+
+	public String getUsuarioCreador() {
+		return usuarioCreador;
+	}
+
+	public void setUsuarioCreador(String usuarioCreador) {
+		this.usuarioCreador = usuarioCreador;
 	}
 }
